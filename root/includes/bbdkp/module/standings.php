@@ -120,29 +120,28 @@ $db->sql_freeresult ( $result );
 $filtervalues ['separator2'] = '--------';
 
 // get classlist
-   $sql_array = array(
-    'SELECT'    => 	'  c.game_id, c.class_id, l.name as class_name, c.class_min_level, c.class_max_level, c.imagename ', 
-    'FROM'      => array(
-        CLASS_TABLE 	=> 'c',
-        BB_LANGUAGE		=> 'l', 
-        MEMBER_LIST_TABLE	=> 'i', 
-        MEMBER_DKP_TABLE	=> 'd', 
-    	),
-    'WHERE'		=> " c.class_id > 0 and l.attribute_id = c.class_id and c.game_id = l.game_id
-     AND l.language= '" . $config['bbdkp_lang'] . "' AND l.attribute = 'class' 
-     AND i.member_class_id = c.class_id and i.game_id = c.game_id 
-     AND d.member_id = i.member_id ",   				    	
-	'GROUP_BY'	=> 'c.game_id, c.class_id, l.name, c.class_min_level, c.class_max_level, c.imagename',
-	'ORDER_BY'	=> 'l.game_id, c.class_id ',
-    );
-    
-    
-    
+$sql_array = array(
+  'SELECT'    => 	'  c.game_id, c.class_id, l.name as class_name, c.class_min_level, c.class_max_level, c.imagename, c.colorcode ', 
+  'FROM'      => array(
+       CLASS_TABLE 	=> 'c',
+       BB_LANGUAGE		=> 'l', 
+       MEMBER_LIST_TABLE	=> 'i', 
+       MEMBER_DKP_TABLE	=> 'd', 
+   	),
+  'WHERE'		=> " c.class_id > 0 and l.attribute_id = c.class_id and c.game_id = l.game_id
+   AND l.language= '" . $config['bbdkp_lang'] . "' AND l.attribute = 'class' 
+   AND i.member_class_id = c.class_id and i.game_id = c.game_id 
+   AND d.member_id = i.member_id ",   				    	
+  'GROUP_BY'	=> 'c.game_id, c.class_id, l.name, c.class_min_level, c.class_max_level, c.imagename',
+  'ORDER_BY'	=> 'l.game_id, c.class_id ',
+   );
+   
 $sql = $db->sql_build_query('SELECT', $sql_array);   
 $result = $db->sql_query ( $sql,604000);
 
 while ( $row = $db->sql_fetchrow ( $result ) )
 {
+	$classarray[] = $row;
 	$filtervalues [$row['game_id'] . '_class_' . $row ['class_id']] = $row ['class_name'];
 	$classname [$row['game_id'] . '_class_' . $row ['class_id']] = $row ['class_name'];
 }
@@ -383,6 +382,7 @@ while ( $row = $db->sql_fetchrow ( $members_result ) )
 	$race_image = (string) (($row['member_gender_id']==0) ? $row['image_male_small'] : $row['image_female_small']);
 	
 	++$member_count;
+	$memberarray [$member_count] ['game_id'] = $row ['game_id'];
 	$memberarray [$member_count] ['class_id'] = $row ['class_id'];
 	$memberarray [$member_count] ['dkpsys_name'] = $row ['dkpsys_name']; 
 	$memberarray [$member_count] ['member_id'] = $row ['member_id'];
@@ -694,7 +694,7 @@ foreach ( $memberarray as $key => $member )
 }
 
 
-leaderboard ( $dkpsys_id, $query_by_pool, $show_all );
+leaderboard ( $memberarray, $classarray );
 
 // Added to the end of the sort links
 $uri_addon = '';
@@ -811,117 +811,61 @@ page_header ( $user->lang ['LISTMEMBERS_TITLE'] );
  * @param bool $query_by_pool
  * @param bool $show_all
  */
-function leaderboard($dkpsys_id, $query_by_pool, $show_all)
+function leaderboard($memberarray, $classarray)
 {
 	// get all classes that have dkp members
 	global $db, $template, $config;
 	global $phpbb_root_path, $phpbb_admin_path, $phpEx;
 
-    $sql_array = array(
-	    'SELECT'    => 	' c.game_id, c.class_id, l.name as class_name, c.imagename, c.colorcode ', 
-	    'FROM'      => array(
-	        CLASS_TABLE 		=> 'c',
-	        BB_LANGUAGE			=> 'l',
-	        MEMBER_LIST_TABLE	=> 'li',
-	        MEMBER_DKP_TABLE 	=> 'm',
-	    	),
-	    'WHERE'		=> "class_id != 0 AND l.attribute_id = c.class_id AND l.language= '" . $config['bbdkp_lang'] . 
-	    				"' AND l.attribute = 'class' and c.game_id = l.game_id and 
-	    				m.member_id = li.member_id and li.member_class_id = c.class_id and li.game_id = c.game_id ",   				    	
-		'ORDER_BY'	=> 'l.name ',
-	    'GROUP_BY'	=> 'c.game_id, c.class_id, l.name, c.imagename, c.colorcode ',
-    );
-	$sql = $db->sql_build_query('SELECT', $sql_array);
-	
-	$result = $db->sql_query ($sql);
 	$classes = array ();
-	$class=0;
-	while ( $row = $db->sql_fetchrow ( $result ) )
+	foreach ($classarray as $k => $class)
 	{
-		$class++;
 		$template->assign_block_vars ( 'class', 
 			array (
-				'CLASSNAME' 	=> $row ['class_name'], 
-				'CLASSIMGPATH'	=> (strlen($row['imagename']) > 1) ? $row['imagename'] . ".png" : '',
-				'COLORCODE' 	=> $row['colorcode']
+				'CLASSNAME' 	=> $class ['class_name'], 
+				'CLASSIMGPATH'	=> (strlen($class['imagename']) > 1) ? $class['imagename'] . ".png" : '',
+				'COLORCODE' 	=> $class['colorcode']
 				) 
 			);
 		
-		$sql_array = array(
-		    'SELECT'    => 	'm.member_dkpid , m.member_id, m.member_status, 
-    						(m.member_earned-m.member_spent+m.member_adjustment - ( ' . max(0, $config['bbdkp_basegp']) . ') ) AS member_current, l.member_name,
-        					r.rank_name, r.rank_hide, r.rank_prefix, r.rank_suffix ', 
-		 
-		    'FROM'      => array(
-		        MEMBER_DKP_TABLE 	=> 'm',
-		        MEMBER_LIST_TABLE 	=> 'l',
-		        MEMBER_RANKS_TABLE  => 'r',
-		        
-		    	),
-		 
-		    'WHERE'     =>  " (m.member_id = l.member_id) 
-				        AND ( l.member_class_id = " . (int) $row ['class_id']  . " )
-				        AND ( l.game_id = '" . $db->sql_escape ( $row ['game_id'] ) . "' )  
-				        AND (r.rank_id = l.member_rank_id) 
-				        AND (r.guild_id = l.member_guild_id)
-				        AND rank_hide = 0"
-		);
 		
-		if($config['bbdkp_epgp'] == 1)
+		foreach ($memberarray as  $member)
 		{
-			$sql_array[ 'SELECT'] .= ', case when (m.member_spent - m.member_item_decay) = 0 then (m.member_earned - m.member_raid_decay + m.member_adjustment)  
-				else round((m.member_earned - m.member_raid_decay + m.member_adjustment) / (' . max(0, $config['bbdkp_basegp']) .' + m.member_spent - m.member_item_decay),2) end as pr ' ;
-		}
-		
-		if ($query_by_pool)
-		{
-			$sql_array['WHERE'] .= ' AND m.member_dkpid = ' . $dkpsys_id . ' ';
-		}
-		
-		if ($config ['bbdkp_hide_inactive'] == '1' && !$show_all )
-		{
-			// don't show inactive members
-			$sql_array[ 'WHERE'] .= ' AND m.member_status = 1 ';
-		}
-		
-		$sql_array['ORDER_BY'] = "member_current DESC";
-		
-		$sql = $db->sql_build_query('SELECT', $sql_array);
-		
-		$result2 = $db->sql_query ( $sql );
-		
-		while ( $dkprow = $db->sql_fetchrow ( $result2 ) )
-		{
-			//dkp data per class
-			$dkprowarray= array (
-				'NAME' => $dkprow ['rank_prefix'] . (($dkprow ['member_status'] == '0') ? '<em>' . $dkprow ['member_name'] . '</em>' : $dkprow ['member_name']) . $dkprow ['rank_suffix'], 
-				'CURRENT' => $dkprow ['member_current'], 
-				'DKPCOLOUR' => ($dkprow ['member_current'] >= 0) ? 'positive' : 'negative', 
-				'U_VIEW_MEMBER' => append_sid ( "{$phpbb_root_path}dkp.$phpEx", 'page=viewmember&amp;'. 
-						URI_NAMEID . '=' . $dkprow ['member_id'] . '&amp;' . 
-						URI_DKPSYS . '=' . $dkprow['member_dkpid'] ) );
-				
-			if($config['bbdkp_epgp'] == 1)
+			if($member['class_id'] == $class['class_id'] && $member['game_id'] == $class['game_id'])
 			{
-				$dkprowarray[ 'PR'] = $dkprow ['pr'] ;
+				//dkp data per class
+				$dkprowarray= array (
+					'NAME' => ($member ['member_status'] == '0') ? '<em>' . $member ['member_name'] . '</em>' : $member ['member_name'] , 
+					'CURRENT' => $member ['member_current'], 
+					'DKPCOLOUR' => ($member ['member_current'] >= 0) ? 'positive' : 'negative', 
+					'U_VIEW_MEMBER' => append_sid ( "{$phpbb_root_path}dkp.$phpEx", 'page=viewmember&amp;'. 
+							URI_NAMEID . '=' . $member ['member_id'] . '&amp;' . 
+							URI_DKPSYS . '=' . $member['member_dkpid'] ) );
+					
+				if($config['bbdkp_epgp'] == 1)
+				{
+					$dkprowarray[ 'PR'] = $member ['pr'] ;
+				}
+				
+				$template->assign_block_vars ( 'class.dkp_row', $dkprowarray );
 			}
 				
-			$template->assign_block_vars ( 'class.dkp_row', $dkprowarray );
 		}
-		$db->sql_freeresult ( $result2 );
 		
 		$template->assign_vars ( array (
 			'S_SHOWLEAD' => true, 
 		));	
 	}
 	
-	if($class==0)
+	if(count($classarray)==0)
 	{
 		$template->assign_vars ( array (
 			'S_SHOWLEAD' => false,
 		));
 	}
-	
+
+	unset($memberarray);
+	unset($classarray);
 }
 
 ?>
