@@ -158,46 +158,46 @@ class acp_dkp_event extends bbDKP_Admin
 					$event_value= request_var('event_value', 0.0);
 
 					// check existing
-					 $result = $db->sql_query("SELECT count(*) as evcount from " . EVENTS_TABLE . 
-					 " WHERE UPPER(event_name) = '" . strtoupper($db->sql_escape(utf8_normalize_nfc(request_var('event_name',' ', true))))	."' ;");
-					 $eventexistsrow = $db->sql_fetchrow($result);
-					 $db->sql_freeresult($result);
+					$result = $db->sql_query("SELECT count(*) as evcount from " . EVENTS_TABLE . 
+					" WHERE UPPER(event_name) = '" . strtoupper($db->sql_escape(utf8_normalize_nfc(request_var('event_name',' ', true))))	."' ;");
+					$eventexistsrow = $db->sql_fetchrow($result);
+					$db->sql_freeresult($result);
 					 
-					 if($eventexistsrow['evcount'] > 0 )
-					 {
+					if($eventexistsrow['evcount'] > 0 )
+					{
 						trigger_error($user->lang['ERROR_RESERVED_EVENTNAME']	. $link, E_USER_WARNING);
-					 }
+					}
 					 
-					 $result0 = $db->sql_query("SELECT MAX(event_id) as id FROM " . EVENTS_TABLE . ";");
-					 $this_event_id = $db->sql_fetchrow($result0);
-					 $db->sql_freeresult($result0);
+					$result0 = $db->sql_query("SELECT MAX(event_id) as id FROM " . EVENTS_TABLE . ";");
+					$this_event_id = $db->sql_fetchrow($result0);
+					$db->sql_freeresult($result0);
 					 
-					 $this_event_id = $this_event_id['id'] + 1;
-					 $query = $db->sql_build_array('INSERT', array(	
-							 'event_dkpid'	=> $this_dkp_id,	 
-							 'event_id'		=> $this_event_id, 
-							 'event_name'	=> $event_name,
-							 'event_imagename'	=> $event_imagename,	
-							 'event_color'	=> $event_color,	 
-							 'event_value'	=> $event_value,	
-							 'event_added_by' => $user->data['username'])	
-						 );		
+					$this_event_id = $this_event_id['id'] + 1;
+					$query = $db->sql_build_array('INSERT', array(	
+						 'event_dkpid'	=> $this_dkp_id,	 
+						 'event_id'		=> $this_event_id, 
+						 'event_name'	=> $event_name,
+						 'event_imagename'	=> $event_imagename,	
+						 'event_color'	=> $event_color,	 
+						 'event_value'	=> $event_value,	
+						 'event_added_by' => $user->data['username'])	
+					 );		
 								
-					 $db->sql_query('INSERT INTO ' . EVENTS_TABLE . $query);
+					$db->sql_query('INSERT INTO ' . EVENTS_TABLE . $query);
 						
-					 $log_action = array(
+					$log_action = array(
 							 'header'		=> 'L_ACTION_EVENT_ADDED',
 							 'id'			=> $this_event_id,
 							 'L_NAME'	=> $event_name,
 							 'L_VALUE'	=> $event_value,
 							 'L_ADDED_BY' => $user->data['username']);
 						 
-					 $this->log_insert(array(
+					$this->log_insert(array(
 							 'log_type'	=> $log_action['header'],
 							 'log_action' => $log_action)
 						 );
-					 $success_message = sprintf($user->lang['ADMIN_ADD_EVENT_SUCCESS'], request_var('event_value', 0.0), $event_name);
-					 trigger_error($success_message . $link);
+					$success_message = sprintf($user->lang['ADMIN_ADD_EVENT_SUCCESS'], request_var('event_value', 0.0), $event_name);
+					trigger_error($success_message . $link);
 				 }
 					 
 				if ($submit)
@@ -370,7 +370,7 @@ class acp_dkp_event extends bbDKP_Admin
 								),
 					'WHERE'		=> " z.id = l.attribute_id 
 									AND l.attribute='zone' 
-									AND l.game_id = z.game_id 
+									AND l.game_id = z.game
 									AND l.language= '" . $config['bbdkp_lang'] ."' 
 									AND " . $db->sql_in_set('l.game_id', $installed_games), 
 					'ORDER_BY'	=> 'sequence desc, id desc ',

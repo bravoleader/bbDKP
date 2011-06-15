@@ -192,7 +192,7 @@ class acp_dkp_adj extends bbDKP_Admin
 						'COLORCODE'  => ($adj['colorcode'] == '') ? '#123456' : $adj['colorcode'],
 		                'CLASS_IMAGE' 	=> (strlen($adj['imagename']) > 1) ? $phpbb_root_path . "images/class_images/" . $adj['imagename'] . ".png" : '',  
 						'S_CLASS_IMAGE_EXISTS' => (strlen($adj['imagename']) > 1) ? true : false, 				
-						'U_VIEW_MEMBER' => ( isset($adj['member_name']) ) ? append_sid("{$phpbb_root_path}viewmember.$phpEx", URI_NAMEID . '='.$adj['member_id'] . '&amp;' . URI_DKPSYS . '='.$adj['adjustment_dkpid'])  : '',
+						'U_VIEW_MEMBER' => ( isset($adj['member_name']) ) ? append_sid("{$phpbb_root_path}dkp.$phpEx", "page=viewmember&amp;" . URI_NAMEID . '='.$adj['member_id'] . '&amp;' . URI_DKPSYS . '='.$adj['adjustment_dkpid'])  : '',
 						'MEMBER' => ( isset($adj['member_name']) ) ? $adj['member_name'] : '',
 						'REASON' => ( isset($adj['adjustment_reason']) ) ? $adj['adjustment_reason']  : '',
 						'ADJUSTMENT' => $adj['adjustment_value'],

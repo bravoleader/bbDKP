@@ -138,8 +138,7 @@ class acp_dkp_mm extends bbDKP_Admin
 					4 => array('rank_name', 'rank_name desc'),
 					5 => array('member_joindate', 'member_joindate desc'),
 					6 => array('member_outdate', 'member_outdate desc'),
-					7 => array('member_comment', 'member_comment desc'),
-						8 => array('member_race', 'member_race desc'),
+					7 => array('member_race', 'member_race desc'),
 				);
 				
 				$current_order = switch_order($sort_order);
@@ -217,7 +216,6 @@ class acp_dkp_mm extends bbDKP_Admin
 						'RACE_IMAGE' 	=> (strlen($race_image) > 1) ? $phpbb_root_path . "images/race_images/" . $race_image . ".png" : '',  
 						'S_RACE_IMAGE_EXISTS' => (strlen($race_image) > 1) ? true : false, 
 						'CLASS'         => ( $row['member_class'] != 'NULL' ) ? $row['member_class'] : '&nbsp;',
-						'COMMENT'       => $row['member_comment'],
 						'JOINDATE'      => date($config['bbdkp_date_format'], $row['member_joindate']),
 						'OUTDATE'       => ($row['member_outdate'] == 0) ? '' : date($config['bbdkp_date_format'], $row['member_outdate']),  
 						'U_VIEW_USER' 	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=users&amp;icat=13&amp;mode=overview&amp;u=$phpbb_user_id"), 
@@ -240,7 +238,6 @@ class acp_dkp_mm extends bbDKP_Admin
 					'F_MEMBERS_LIST' => append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm") . '&amp;mode=mm_listmembers',
 					'L_TITLE'		=> $user->lang['ACP_MM_LISTMEMBERS'],
 					'L_EXPLAIN'		=> $user->lang['ACP_MM_LISTMEMBERS_EXPLAIN'],
-					
 					'O_NAME' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][0] . "&amp;" . URI_GUILD . "=" . $guild_id) ,
 					'O_USERNAME'	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][1] . "&amp;" . URI_GUILD . "=" . $guild_id) ,
 					'O_LEVEL' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][2] . "&amp;" . URI_GUILD . "=". $guild_id),
@@ -249,7 +246,6 @@ class acp_dkp_mm extends bbDKP_Admin
 					'O_ARMOR' 		=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][5] . "&amp;" . URI_GUILD . "=". $guild_id),
 					'O_JOINDATE' 	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][6] . "&amp;" . URI_GUILD . "=". $guild_id),
 					'O_OUTDATE' 	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][7] . "&amp;" . URI_GUILD . "=". $guild_id),
-					'O_COMMENT' 	=> append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;o=" . $current_order['uri'][8] . "&amp;" . URI_GUILD . "=". $guild_id),
 					'U_LIST_MEMBERS' => append_sid("{$phpbb_admin_path}index.$phpEx", "i=dkp_mm&amp;mode=mm_listmembers&amp;"), 		
 					'LISTMEMBERS_FOOTCOUNT' => $footcount_text
 					)

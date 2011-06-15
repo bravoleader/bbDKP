@@ -1069,6 +1069,7 @@ class acp_dkp_item extends bbDKP_Admin
 		    				and d.dkpsys_id = e.event_dkpid 
 	    					and e.event_id = r.event_id 
 	    					and i.member_id = l.member_id 
+	    					AND l.game_id = c.game_id
 	    					and r.raid_id = i.raid_id 
 		     				and d.dkpsys_id = ' . $dkpsys_id . ' 
 		     				AND i.raid_id = ' .  $raid_id,  
