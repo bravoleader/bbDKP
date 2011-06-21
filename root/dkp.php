@@ -106,31 +106,12 @@ switch ($page)
 		break;	
 	case 'planneradd':
 		include($phpbb_root_path . 'includes/bbdkp/raidplanner/planneradd.' . $phpEx);
-		break;	
-		
+		break;		
 }
+$template->set_filenames(array(
+	'body' => 'dkp/dkpmain.html')
+);
 
-// redirect to dkp template
-if ($page !=   'planner' && $page !=  'planneradd')
-{
-	$template->set_filenames(array(
-		'body' => 'dkp/dkpmain.html')
-	);
-	
-	page_footer();
-}
-else 
-{
-	//redirect to planner system
-	switch ($page)
-	{
-		case 'planner':
-			include($phpbb_root_path . 'includes/bbdkp/raidplanner/planner.' . $phpEx);
-			break;	
-		case 'planneradd':
-			include($phpbb_root_path . 'includes/bbdkp/raidplanner/planneradd.' . $phpEx);
-			break;			
-	}
-}
+page_footer();
 
 ?>
