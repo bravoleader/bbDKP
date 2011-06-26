@@ -1,11 +1,7 @@
 <!-- INCLUDE overall_header.html -->
-<!--
-		$Id$
-//-->
-    
-<script type="text/javascript">
- //<![CDATA[ 
 
+<script type="text/javascript">
+// <![CDATA[
 function check_form()
 {
     if (document.post.member_name.value.length < 2)
@@ -15,6 +11,8 @@ function check_form()
     }
     return true;
 }
+
+
 
 /*  make a XMLHTTP Request object */
 function GetXmlHttpObject() 
@@ -117,6 +115,7 @@ function GetClassRace(game_id)
 }
 
 
+
 /* called from GetClassRace when state changed */
 function classracestateChanged()
 {
@@ -127,30 +126,41 @@ function classracestateChanged()
 			//receive xml
 			xmlDoc=xmlhttp.responseXML;
 			var racelist = xmlDoc.getElementsByTagName('racelist')[0];
-			var species = racelist.getElementsByTagName("race")
 			var classlist = xmlDoc.getElementsByTagName("classlist")[0];
-			var classes = classlist.getElementsByTagName("class")
+
+			var species = racelist.getElementsByTagName("race");
+			var classes = classlist.getElementsByTagName("class");
+			
 			//now modify html : first remove old select options
 			var rsel = document.getElementById('raceselect'); 
 			rsel.options.length = 0; 
+
+			
 			for (var i = 0; i < species.length; i++)
 			{
-				var race = species[i]; 
-				var raceid = race.getElementsByTagName("race_id")[0].firstChild.nodeValue;
-				var racename = race.getElementsByTagName("race_name")[0].firstChild.nodeValue;
+				var spec = species[i]; 
+				var raceid = spec.getElementsByTagName("race_id")[0].firstChild.nodeValue;
+				var racename = spec.getElementsByTagName("race_name")[0].firstChild.nodeValue;
 			    // add the options
 			    rsel.options[i] = new Option(racename,raceid, true, false); 
 			}
+			
 			var csel = document.getElementById('classselect'); 
 			csel.options.length = 0; 
-			for (var i = 0; i < classes.length; i++)
+
+			
+			for (var j = 0; j < classes.length; j++)
 			{
-				var class = classes[i]; 
-				var classid = class.getElementsByTagName("class_id")[0].firstChild.nodeValue;
-				var classname = class.getElementsByTagName("class_name")[0].firstChild.nodeValue;
+				
+				var cla = classes[j]; 
+				var classid = cla.getElementsByTagName("class_id")[0].firstChild.nodeValue;
+				var classname = cla.getElementsByTagName("class_name")[0].firstChild.nodeValue;
 			    // add the options
-			    csel.options[i] = new Option(classname,classid, true, false); 
+			    csel.options[j] = new Option(classname,classid, true, false); 
 			}
+			
+			
+			
 		}
 		else 
 		{
@@ -158,8 +168,11 @@ function classracestateChanged()
 	 	}
 	}
 }
- //]]>  
 
+
+
+
+// ]]>
 </script>
 <a name="maincontent"></a>
 <!-- IF S_ADD -->
@@ -171,11 +184,10 @@ function classracestateChanged()
 <p>{L_EXPLAIN}</p>
 
 <form method="post" action="{F_ADD_MEMBER}" name="post" onsubmit="return check_form(this)" >
-<input type="hidden" name="hidden_member_id" value="{MEMBER_ID}" />
-<input type="hidden" name="hidden_member_name" value="{MEMBER_NAME}" />
 
 <fieldset>
 <legend>{L_ACP_MM_ADDMEMBER}</legend>
+
 <br />
 
   <dl>
@@ -191,7 +203,7 @@ function classracestateChanged()
 <dl>
 <dt><label for="member_guild_id">{L_GUILD}:</label></dt>
 <dd>
-	<select name="member_guild_id" class="input" onChange="return GetRank(this.value)">
+	<select name="member_guild_id" class="input" onchange="return GetRank(this.value)">
 	   <!-- BEGIN guild_row -->
     <option value="{guild_row.VALUE}"{guild_row.SELECTED}>{guild_row.OPTION}</option>
        <!-- END guild_row -->
@@ -214,7 +226,7 @@ function classracestateChanged()
   <dl>
     <dt><label for="game_id">{L_GAME}:</label></dt>
   		<dd>
-  		<select name="game_id" class="input" onChange="return GetClassRace(this.value)">
+  		<select name="game_id" class="input" onchange="return GetClassRace(this.value)">
        <!-- BEGIN game_row -->
        <option value="{game_row.VALUE}"{game_row.SELECTED}>{game_row.OPTION}</option>
         <!-- END game_row -->
@@ -307,6 +319,8 @@ function classracestateChanged()
 	  
   <p class="quick">
   {S_FORM_TOKEN}
+    <input type="hidden" name="hidden_member_id" value="{MEMBER_ID}" />
+	<input type="hidden" name="hidden_member_name" value="{MEMBER_NAME}" />
     <!-- IF S_ADD -->
     <input type="submit" name="add" value="{L_ADD_MEMBER}" class="button1" /> <input type="reset" name="reset" value="{L_RESET}" class="button1" />
     <!-- ELSE -->
@@ -316,7 +330,6 @@ function classracestateChanged()
 </fieldset>
 
 </form>
-
 
 <!-- INCLUDE dkp/overall_footer.html -->
 
