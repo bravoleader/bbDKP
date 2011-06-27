@@ -25,6 +25,7 @@ $list_p3 = (isset ( $config ['bbdkp_list_p3'] ) == true) ? $config ['bbdkp_list_
 // pulldown
 $query_by_pool = false;
 $defaultpool = 99; 
+$dkpvalues = array();
 
 $dkpvalues[0] = $user->lang['ALL']; 
 $dkpvalues[1] = '--------'; 
@@ -105,6 +106,11 @@ $query_by_pool = ($dkpsys_id != 0) ? true : false;
 /**** end dkpsys pulldown  ****/
 
 /***** begin armor-class pulldown ****/
+$classarray = array();
+$filtervalues = array();
+$armor_type = array();
+$classname = array();
+
 $filtervalues ['all'] = $user->lang['ALL']; 
 $filtervalues ['separator1'] = '--------';
 
@@ -138,6 +144,7 @@ $sql_array = array(
    
 $sql = $db->sql_build_query('SELECT', $sql_array);   
 $result = $db->sql_query ( $sql,604000);
+
 
 while ( $row = $db->sql_fetchrow ( $result ) )
 {
