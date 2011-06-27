@@ -41,7 +41,8 @@ if ($config['bbdkp_recruitment'] == 1)
 	        CLASS_TABLE 	=> 'c',
 	        BB_LANGUAGE		=> 'l', 
 	    	),
-	    'WHERE'		=> " c.game_id = l.game_id and c.class_id > 0 and l.attribute_id = c.class_id  AND l.language= '" . $config['bbdkp_lang'] . "' AND l.attribute = 'class' ",   				    	
+	    'WHERE'		=> " (c.dps !=0 or c.heal != 0 or c.tank != 0) and c.game_id = l.game_id and c.class_id > 0 and l.attribute_id = c.class_id  AND l.language= '" . $config['bbdkp_lang'] . "' AND l.attribute = 'class' ",
+	    
 		'ORDER_BY'	=> ' l.name ',
 	    );
 	    
