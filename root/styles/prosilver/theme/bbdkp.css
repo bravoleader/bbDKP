@@ -321,4 +321,41 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
 	 background-color: #9900AA;
 }
 
+span.corners-inner-top, span.corners-inner-bottom, span.corners-inner-top span, span.corners-inner-bottom span {
+	font-size: 1px;
+	line-height: 1px;
+	display: block;
+	height: 5px;
+	background-repeat: no-repeat;
+}
+
+span.corners-inner-top {
+	background-image: url('none');
+	background-position: 0 0;
+	margin: 0 -5px;
+}
+
+span.corners-inner-top span {
+	background-image: url('none');
+	background-position: 100% 0;
+}
+
+span.corners-inner-bottom {
+	background-image: url('none');
+	background-position: 0 100%;
+	margin: 0 -5px;
+	clear: both; 
+}
+
+span.corners-inner-bottom span {
+	background-image: url('none');
+	background-position: 100% 100%;
+}
+
+span.corners-inner-top, span.corners-inner-bottom { 
+	background-image: url('{T_THEME_PATH}/images/dkp/corners_inner_left.gif'); 
+}
+span.corners-inner-top span, span.corners-inner-bottom span { 
+	background-image: url('{T_THEME_PATH}/images/dkp/corners_inner_right.gif'); 
+}
 
