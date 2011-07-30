@@ -152,6 +152,14 @@
 			<file name="styles/prosilver/template/dkp/viewnews.html"/>
 			<file name="styles/prosilver/template/dkp/viewraid.html"/>
 		</delete>
+		<open src="styles/prosilver/template/overall_header.html">
+			<edit>
+				<comment lang="en"><![CDATA[remove header edit]]></comment>
+				<comment lang="fr"><![CDATA[suppression edition entête]]></comment>
+				<comment lang="de"><![CDATA[Löschung overall_header link]]></comment>
+				<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
+			</edit>
+		</open>		
 		<open src="includes/functions.php">
 			<edit>
 				<comment lang="en"><![CDATA[updating links]]></comment>

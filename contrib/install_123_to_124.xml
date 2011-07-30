@@ -106,7 +106,7 @@
 			<file from="root/includes/bbdkp/bbdkp.php" to="includes/bbdkp/bbdkp.php"/>
 			<file from="root/includes/bbdkp/block/*.*" to="includes/bbdkp/block/*.*"/>
 			<file from="root/includes/bbdkp/module/*.*" to="includes/bbdkp/module/*.*"/>
-			<file from="root/includes/bbdkp/pchart/*.*" to="includes/bbdkp/pchart/*.*"/>			
+			<file from="root/includes/bbdkp/pchart/*.*" to="includes/bbdkp/pchart/*.*"/>
 			<file from="root/includes/ucp/*.*" to="includes/ucp/*.*"/>
 			<file from="root/includes/ucp/info/*.*" to="includes/ucp/info/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
@@ -116,6 +116,14 @@
 			<file from="root/styles/prosilver/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
+		<open src="styles/prosilver/template/overall_header.html">
+			<edit>
+				<comment lang="en"><![CDATA[remove header edit]]></comment>
+				<comment lang="fr"><![CDATA[suppression edition entête]]></comment>
+				<comment lang="de"><![CDATA[Löschung overall_header link]]></comment>
+				<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
+			</edit>
+		</open>
 		<php-installer><![CDATA[install/index.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Please see the full installation and upgrade instructions here : /docs/install.html
 What has changed ? see here : /docs/changelog.html
@@ -124,12 +132,12 @@ Post-install instructions :
 1) Run bbDKP 1.2.4 database update : install/index.php 
 2) delete the install folder. 
 		Enjoy ;)]]></diy-instructions>
-<diy-instructions lang="fr"><![CDATA[le guide de mise à jour : /docs/install.html
+		<diy-instructions lang="fr"><![CDATA[le guide de mise à jour : /docs/install.html
 Liste des changements : /docs/changelog.html
 
 1) lancer la mise à jour : install/index.php 
 2) Supprimer le repertoire /install pour réactiver le forum.]]></diy-instructions>
-<diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
+		<diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
 Liste der änderungen : /docs/changelog.html
 
 1) Datenbank aktualisierung : install/index.php 

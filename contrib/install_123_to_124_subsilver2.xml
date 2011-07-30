@@ -108,6 +108,14 @@
 			<file from="root/styles/subsilver2/template/dkp/module/*.*" to="styles/prosilver/template/dkp/module/*.*"/>
 			<file from="root/styles/subsilver2/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>  
     </copy>
+	<open src="styles/subsilver2/template/overall_header.html">
+		<edit>
+			<comment lang="en"><![CDATA[remove header edit]]></comment>
+			<comment lang="fr"><![CDATA[suppression edition entête]]></comment>
+			<comment lang="de"><![CDATA[Löschung overall_header link]]></comment>
+			<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
+		</edit>
+	</open>    
 <diy-instructions lang="en">See general install.xml file</diy-instructions>
 <diy-instructions lang="fr">Voir instructions générales</diy-instructions>
 <diy-instructions lang="de">Siehe allgemeine Anleitung</diy-instructions>
