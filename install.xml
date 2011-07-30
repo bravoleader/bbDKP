@@ -329,13 +329,6 @@ function pop_search()
 		
 		<open src="styles/prosilver/template/overall_header.html">
 			<edit>
-				<comment lang="en"><![CDATA[install bbDKP header - All in one file]]></comment>
-				<comment lang="fr"><![CDATA[installation du fichier header - tous en un]]></comment>
-				<comment lang="de"><![CDATA[Installation Headerdatei - Alles in einem]]></comment>
-				<find><![CDATA[</head>]]></find>
-				<action type="before-add"><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></action>
-			</edit>
-			<edit>
 				<comment lang="en"><![CDATA[insert links in template]]></comment>
 				<comment lang="fr"><![CDATA[inserer liens dans template]]></comment>
 				<comment lang="de"><![CDATA[inseriere Links im Template]]></comment>								
