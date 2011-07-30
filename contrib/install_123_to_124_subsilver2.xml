@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
 <!-- $Id: subsilver2.xml 554 2009-09-30 12:31:21Z Sajaki $ -->
-
 <!--For security purposes, please check: http
 ://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
-
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
   <header>
     <license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
-    <title lang="en">bbDkp 1.2.4 - subsilver2 style</title>
-    <description lang="en">
-    <![CDATA[subsilver2]]>
-</description>
-
-<author-notes lang="en"><![CDATA[Press Install to let Automod copy the files and do the core edits, then browse to install/index.php and run the UMIL table installer. then delete the install folder.
-]]>
-</author-notes>
+    <title lang="en">bbDkp 1.2.4 - subsilver2 style updater</title>
+    <title lang="fr">mise à jour style subsilver2 à 1.2.4</title>
+    <title lang="de">Aktualisierung bbDkp 1.2.4 - subsilver2 style</title>
+    <description lang="en"><![CDATA[subsilver2]]></description>
+    <description lang="fr"><![CDATA[subsilver2]]></description>
+    <description lang="de"><![CDATA[subsilver2]]></description>
+<author-notes lang="en"><![CDATA[Press Install to let Automod copy the files and do the core edits, then browse to install/updatedkp.php and run the UMIL updater. then delete the install folder.]]></author-notes>
+<author-notes lang="fr"><![CDATA[Veuillez faire une sauvegarde avant de commencer. ]]></author-notes>
+<author-notes lang="de"><![CDATA[Bitte machen Sie einen vollständigen Backup bevor Sie diesen Mod installieren. ]]></author-notes>
     <author-group>
     <author>
 		<realname>Andy Vandenberghe</realname>
@@ -23,7 +22,8 @@
         <email>sajaki9@gmail.com</email>      
         <homepage>http://www.bbdkp.com</homepage>
         <contributions-group>
-      		<contributions status="current" from="2008-04-04"  position="Developer"/>
+      		<contributions status="current" from="2009-01-01" position="Project leader"/>
+      		<contributions status="past" from="2008-04-04" to="2009-01-01"  position="Developer"/>
       	</contributions-group>	
       </author>
 	 <author>
@@ -41,7 +41,7 @@
 		<email>morten.boegeskov@gmail.com</email>
 		<homepage>http://www.bbdkp.com</homepage>
 		<contributions-group>
-			<contributions status="past" from="2009-05-01"  to="2009-09-01" position="Developer"/>
+			<contributions status="past" from="2009-05-01" to="2009-07-10" position="Developer"/>
 		</contributions-group>
 	</author>
 	<author>
@@ -67,6 +67,14 @@
       </contributions-group>
 	</author>
     <author>
+      <username>sz3</username>
+	  <realname>sz3</realname>
+	  <homepage>http://www.eqdkp.com</homepage>
+      <contributions-group>
+      		<contributions status="past" position="original EQDKP BossProgress v3.0.3 by sz3" />
+      </contributions-group>	
+	</author>	
+    <author>
 	  <realname>Tsigo</realname>
 	  <username>Tsigo</username>
 	  <homepage>http://www.eqdkp.com</homepage>
@@ -74,70 +82,34 @@
       		<contributions status="past" position="original developer of EQDKP, on which this PHPBB MOD was inspired." />
       </contributions-group>
 	</author>	
+    
     </author-group>
 
 <mod-version>1.2.4</mod-version>
-
 <installation>
       <level>easy</level>
       <time>600</time>
 	<target-version>3.0.8</target-version>
 </installation>
-
 <link-group>
-	<link type="parent" lang="en" href="../install.xml">Manual</link>
+	<link type="parent" lang="en" href="../install.xml">Installation 1.2.4</link>
+	<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.4</link>
+	<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.4</link>	
+			
+	<link type="parent" lang="en" href="install_123_to_124.xml">Update Manual</link>
+	<link type="parent" lang="fr" href="install_123_to_124.xml">Manual de mise à jour</link>
+	<link type="parent" lang="de" href="install_123_to_124.xml">Aktualisierung</link>
 </link-group>
-		
   </header>
   <action-group>
     <copy>
-     <file from="root/styles/subsilver2/template/dkp/*.*" to="styles/subsilver2/template/dkp/*.*"/>
-     <file from="root/styles/subsilver2/template/dkp/block/*.*" to="styles/subsilver2/template/dkp/block/*.*"/> 
-     <file from="root/styles/subsilver2/template/dkp/module/*.*" to="styles/subsilver2/template/dkp/module/*.*"/>      
-     <file from="root/styles/subsilver2/theme/*.*" to="styles/subsilver2/theme/*.*"/>
-     <file from="root/styles/subsilver2/theme/images/dkp/*.*" to="styles/subsilver2/theme/images/dkp/*.*"/>    
+			<file from="root/styles/subsilver2/theme/bbdkp.css" to="styles/prosilver/theme/bbdkp.css"/>
+			<file from="root/styles/subsilver2/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
+			<file from="root/styles/subsilver2/template/dkp/module/*.*" to="styles/prosilver/template/dkp/module/*.*"/>
+			<file from="root/styles/subsilver2/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>  
     </copy>
-
-<open src="/styles/subsilver2/template/breadcrumbs.html">
-<edit>
-	<comment lang="en">insert bbdkp links</comment>
-	<find><![CDATA[<p class="breadcrumbs"><a href="{U_INDEX}">{L_INDEX}</a>]]></find>
-	<inline-edit>
-		<inline-find><![CDATA[<p class="breadcrumbs">]]></inline-find>
-		<inline-action type="after-add"><![CDATA[<a href="{U_PORTAL}">{L_PORTAL}</a>&nbsp;&#187;&nbsp;<a href="{U_DKP}">{L_DKP}</a>&nbsp;&#187;&nbsp;]]></inline-action>
-	</inline-edit>	
-</edit>
-
-</open>
-
-<open src="/styles/subsilver2/template/overall_footer.html">
-      <edit>
-        <find><![CDATA[2000, 2002, 2005, 2007 phpBB Group]]></find>
-        <action type="after-add"><![CDATA[<br />
-<script type="text/javascript">
-function pop_search()
-{
-    search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70')
-    search.focus();
-}
-</script>
-<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">BBdkp Credits</a>
-<br />]]></action>
-      </edit>
-</open>
-
-<open src="/styles/subsilver2/theme/stylesheet.css">
-      <edit>
-      <comment lang="en">bbdkp css</comment>
-      
-        <find><![CDATA[/* Layout
- ------------ */
-]]></find>
-	<action type="after-add"><![CDATA[@import url("bbdkp.css");]]></action>
-      </edit>
-    </open>
-    
 <diy-instructions lang="en">See general install.xml file</diy-instructions>
-
+<diy-instructions lang="fr">Voir instructions générales</diy-instructions>
+<diy-instructions lang="de">Siehe allgemeine Anleitung</diy-instructions>
 </action-group>
 </mod>

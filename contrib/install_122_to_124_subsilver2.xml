@@ -6,9 +6,9 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
   <header>
     <license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
-    <title lang="en">bbDkp 1.2.3 - subsilver2 style updater</title>
-    <title lang="fr">mise à jour style subsilver2 à 1.2.3</title>
-    <title lang="de">Aktualisierung bbDkp 1.2.3 - subsilver2 style</title>
+    <title lang="en">bbDkp 1.2.4 - subsilver2 style updater</title>
+    <title lang="fr">mise à jour style subsilver2 à 1.2.4</title>
+    <title lang="de">Aktualisierung bbDkp 1.2.4 - subsilver2 style</title>
     <description lang="en"><![CDATA[subsilver2]]></description>
     <description lang="fr"><![CDATA[subsilver2]]></description>
     <description lang="de"><![CDATA[subsilver2]]></description>
@@ -85,20 +85,20 @@
     
     </author-group>
 
-<mod-version>1.2.3</mod-version>
+<mod-version>1.2.4</mod-version>
 <installation>
       <level>easy</level>
       <time>600</time>
 	<target-version>3.0.8</target-version>
 </installation>
 <link-group>
-	<link type="parent" lang="en" href="../install.xml">Installation 1.2.3</link>
-	<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.3</link>
-	<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.3</link>	
+	<link type="parent" lang="en" href="../install.xml">Installation 1.2.4</link>
+	<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.4</link>
+	<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.4</link>	
 			
-	<link type="parent" lang="en" href="install_122_to_123.xml">Update Manual</link>
-	<link type="parent" lang="fr" href="install_122_to_123.xml">Manual de mise à jour</link>
-	<link type="parent" lang="de" href="install_122_to_123.xml">Aktualisierung</link>
+	<link type="parent" lang="en" href="install_122_to_124.xml">Update Manual</link>
+	<link type="parent" lang="fr" href="install_122_to_124.xml">Manual de mise à jour</link>
+	<link type="parent" lang="de" href="install_122_to_124.xml">Aktualisierung</link>
 </link-group>
   </header>
   <action-group>

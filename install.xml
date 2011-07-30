@@ -157,7 +157,7 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.2.3</mod-version>
+		<mod-version>1.2.4</mod-version>
 		<installation>
 			<level>advanced</level>
 			<time>1200</time>
@@ -176,10 +176,14 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 			<link type="language" lang="fr" href="contrib/de.xml">Allemand</link>
 			<link type="language" lang="de" href="contrib/de.xml">Deutsch</link>	
 			
-			<link type="contrib" lang="en" href="contrib/install_122_to_123.xml">Update from v1.2.2 to v1.2.3</link>
-			<link type="contrib" lang="fr" href="contrib/install_122_to_123.xml">Mise à jour de v1.2.2 à v1.2.3</link>
-			<link type="contrib" lang="de" href="contrib/install_122_to_123.xml">Aktualisierung von v1.2.2 bis v1.2.3</link>
-						
+			<link type="contrib" lang="en" href="contrib/install_123_to_124.xml">Update from v1.2.3 to v1.2.4</link>
+			<link type="contrib" lang="fr" href="contrib/install_123_to_124.xml">Mise à jour de v1.2.3 à v1.2.4</link>
+			<link type="contrib" lang="de" href="contrib/install_123_to_124.xml">Aktualisierung von v1.2.3 bis v1.2.4</link>
+			
+			<link type="contrib" lang="en" href="contrib/install_122_to_124.xml">Update from v1.2.2 to v1.2.4</link>
+			<link type="contrib" lang="fr" href="contrib/install_122_to_124.xml">Mise à jour de v1.2.2 à v1.2.4</link>
+			<link type="contrib" lang="de" href="contrib/install_122_to_124.xml">Aktualisierung von v1.2.2 bis v1.2.4</link>
+			
 			</link-group>
 	</header>
 	<action-group>
@@ -344,7 +348,7 @@ What has changed ? see here : /docs/changelog.html
 
 Post-install instructions : 
 
-1) Run bbDKP 1.2.3 database installation : install/index.php 
+1) Run bbDKP 1.2.4 database installation : install/index.php 
 2) Rename the install folder. 
 
 Note : Should you need to deactivate bbDKP you can open configdkp.php change  @define('EMED_BBDKP', true);  to  //@define('EMED_BBDKP', true);  
@@ -355,7 +359,7 @@ Liste des changements : /docs/changelog.html
 
 Résumé des étapes de post-installation
 
-1) lance l’installateur ou m.a.j 1.2.3  : install/index.php
+1) lance l’installateur ou m.a.j 1.2.4  : install/index.php
 2) Renomme ou supprime le repertoire /install pour réactiver le forum.
 
 Note : Il est possible de désactiver le MOD en ouvrant configdkp.php et en changeant  @define('EMED_BBDKP', true);  à  //@define('EMED_BBDKP', true);  
@@ -364,7 +368,7 @@ Success ;)	]]></diy-instructions>
 <diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
 Liste der änderungen : /docs/changelog.html
 
-1) 1.2.3 Datenbank Installation order aktualisierung : install/index.php 
+1) 1.2.4 Datenbank Installation order aktualisierung : install/index.php 
 2) lösche oder umbenenne das Installations-Verzeichnis „install" 
 
 Notiz : Sie können bbDKP deaktivieren indem sie configdkp.php öffnen und @define('EMED_BBDKP', true); ändern nach  //@define('EMED_BBDKP', true);  

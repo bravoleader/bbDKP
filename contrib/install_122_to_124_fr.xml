@@ -24,20 +24,20 @@ Veuillez faire un backup de votre installation phpBB3 avant de commencer.
 				</contributions-group>
 			</author>
 			</author-group>
-		<mod-version>1.2.3</mod-version>
+		<mod-version>1.2.4</mod-version>
 		<installation>
 			<level>advanced</level>
 			<time>1200</time>
 			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
-			<link type="parent" lang="en" href="../install.xml">Installation 1.2.3</link>
-			<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.3</link>
-			<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.3</link>				
+			<link type="parent" lang="en" href="../install.xml">Installation 1.2.4</link>
+			<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.4</link>
+			<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.4</link>				
 
-			<link type="parent" lang="en" href="install_122_to_123.xml">update 1.2.2 to 1.2.3</link>
-			<link type="parent" lang="fr" href="install_122_to_123.xml">Mise à jour 1.2.2 à 1.2.3</link>
-			<link type="parent" lang="de" href="install_122_to_123.xml">Aktualisierung 1.2.2 bis 1.2.3</link>
+			<link type="parent" lang="en" href="install_123_to_124.xml">update 1.2.3 to 1.2.4</link>
+			<link type="parent" lang="fr" href="install_123_to_124.xml">Mise à jour 1.2.3 à 1.2.4</link>
+			<link type="parent" lang="de" href="install_123_to_124.xml">Aktualisierung 1.2.3 bis 1.2.4</link>
 		</link-group>
 	</header>
 	<action-group>

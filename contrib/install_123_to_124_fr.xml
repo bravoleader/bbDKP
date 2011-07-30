@@ -7,11 +7,12 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="de"><![CDATA[bbDKP]]></title>
-		<description lang="de"><![CDATA[Update Deutsche Sprachdateien für bbDKP]]></description>
-		<author-notes lang="de"><![CDATA[Benötigt : phpBB3 v3.0.x, PHP 5 mit Libxml 2.6.0 (simplexml), Curl 
-		Bitte machen Sie einen vollständigen Backup bevor Sie diesen Mod installieren. ]]>
-		</author-notes>
+		<title lang="en"><![CDATA[bbDKP]]></title>
+		<description lang="fr"><![CDATA[Fichiers Français pour bbDKP]]></description>
+		<author-notes lang="en"><![CDATA[Requirements : phpBB3 v3.0.x, PHP 5 with Libxml 2.6.0 (simplexml usage), Curl 
+Veuillez faire un backup de votre installation phpBB3 avant de commencer.
+]]>
+</author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Andy Vandenberghe]]></realname>
@@ -22,28 +23,28 @@
 					<contributions status="current" from="2008-04-04" position="Developer"/>
 				</contributions-group>
 			</author>
-		</author-group>
-		<mod-version>1.2.3</mod-version>
+			</author-group>
+		<mod-version>1.2.4</mod-version>
 		<installation>
 			<level>advanced</level>
 			<time>1200</time>
 			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
-			<link type="parent" lang="en" href="../install.xml">Installation 1.2.3</link>
-			<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.3</link>
-			<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.3</link>					
+			<link type="parent" lang="en" href="../install.xml">Installation 1.2.4</link>
+			<link type="parent" lang="fr" href="../install.xml">Manuel installation 1.2.4</link>
+			<link type="parent" lang="de" href="../install.xml">Installations-Anleitung 1.2.4</link>				
 
-			<link type="parent" lang="en" href="install_123_to_122.xml">update 1.2.2 to 1.2.3</link>
-			<link type="parent" lang="fr" href="install_123_to_122.xml">Mise à jour 1.2.2 à 1.2.3</link>
-			<link type="parent" lang="de" href="install_123_to_122.xml">Aktualisierung 1.2.2 bis 1.2.3</link>	
-	</link-group>
+			<link type="parent" lang="en" href="install_123_to_124.xml">update 1.2.3 to 1.2.4</link>
+			<link type="parent" lang="fr" href="install_123_to_124.xml">Mise à jour 1.2.3 à 1.2.4</link>
+			<link type="parent" lang="de" href="install_123_to_124.xml">Aktualisierung 1.2.3 bis 1.2.4</link>
+		</link-group>
 	</header>
 	<action-group>
 		<copy>
-			<file from="root/language/de/mods/*.*" to="language/de/mods/*.*"/>
+			<file from="root/language/fr/mods/*.*" to="language/fr/mods/*.*"/>
 		</copy>
 	<diy-instructions lang="en">See general install.xml file</diy-instructions>
-	<diy-instructions lang="de">Siehe install.xml</diy-instructions>	
+	<diy-instructions lang="fr">Voir install.xml</diy-instructions>	
 	</action-group>
 </mod>

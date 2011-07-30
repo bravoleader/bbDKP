@@ -6,13 +6,13 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[bbDKP 1.2.2 to 1.2.3]]></title>
-		<description lang="en"><![CDATA[Update script 1.2.2 to 1.2.3]]></description>
-		<description lang="fr"><![CDATA[mise à jour 1.2.2 vers 1.2.3]]></description>
-		<description lang="de"><![CDATA[Aktualisierung 1.2.2 bis 1.2.3]]></description>
-		<author-notes lang="en"><![CDATA[Requires bbdkp 1.2.2, Please read docs/INSTALL.html before beginning]]></author-notes>
-		<author-notes lang="fr"><![CDATA[Requiert bbdkp 1.2.2, Veuillez lire docs/INSTALL.html avant de commencer.]]></author-notes>
-		<author-notes lang="de"><![CDATA[benötigt bbdkp 1.2.2, Bitte lesen sie docs/INSTALL.html bevor.]]></author-notes>
+		<title lang="en"><![CDATA[bbDKP 1.2.3 to 1.2.4]]></title>
+		<description lang="en"><![CDATA[Update script 1.2.3 to 1.2.4]]></description>
+		<description lang="fr"><![CDATA[mise à jour 1.2.3 vers 1.2.4]]></description>
+		<description lang="de"><![CDATA[Aktualisierung 1.2.3 bis 1.2.4]]></description>
+		<author-notes lang="en"><![CDATA[Requires bbdkp 1.2.4, Please read docs/INSTALL.html before beginning]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Requiert bbdkp 1.2.4, Veuillez lire docs/INSTALL.html avant de commencer.]]></author-notes>
+		<author-notes lang="de"><![CDATA[benötigt bbdkp 1.2.4, Bitte lesen sie docs/INSTALL.html bevor.]]></author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Andy Vandenberghe]]></realname>
@@ -73,16 +73,16 @@
 				</contributions-group>
 			</author>
 		</author-group>
-		<mod-version>1.2.3</mod-version>
+		<mod-version>1.2.4</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>600</time>
 			<target-version>3.0.8</target-version>
 		</installation>
 		<link-group>
-			<link type="template" href="install_122_to_123_subsilver2.xml" lang="en">subsilver2 Update</link>
-			<link type="template" href="install_122_to_123_subsilver2.xml" lang="fr">Mise à jour Subsilver2</link>
-			<link type="template" href="install_122_to_123_subsilver2.xml" lang="de">Aktualisierung Subsilver2</link>
+			<link type="template" href="install_123_to_124_subsilver2.xml" lang="en">subsilver2 Update</link>
+			<link type="template" href="install_123_to_124_subsilver2.xml" lang="fr">Mise à jour Subsilver2</link>
+			<link type="template" href="install_123_to_124_subsilver2.xml" lang="de">Aktualisierung Subsilver2</link>
 			<link type="parent" href="../install.xml" lang="de">Frisch-Installations-Anleitung</link>
 			<link type="parent" href="../install.xml" lang="en">Clean-Installation Manual</link>
 			<link type="parent" href="../install.xml" lang="fr">Manuel de première installation</link>
@@ -116,60 +116,12 @@
 			<file from="root/styles/prosilver/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
-		<delete>
-			<file name="listevents.php"/>
-			<file name="listitems.php"/>
-			<file name="listmembers.php"/>
-			<file name="listraids.php"/>
-			<file name="roster.php"/>
-			<file name="stats.php"/>
-			<file name="viewevent.php"/>
-			<file name="viewitem.php"/>
-			<file name="viewmember.php"/>
-			<file name="viewnews.php"/>
-			<file name="viewraid.php"/>
-			<file name="adm/style/dkp/acp_addnews.html"/>
-			<file name="adm/style/dkp/acp_listnews.html"/>
-			<file name="includes/acp/acp_dkp_news.php"/>
-			<file name="includes/acp/info/acp_dkp_news.php"/>
-			<file name="includes/bbdkp/portal/whoisonline.php"/>
-			<file name="includes/bbdkp/portal/userblock.php"/>
-			<file name="includes/bbdkp/portal/recruitmentblock.php"/>
-			<file name="includes/bbdkp/portal/newsblock.php"/>
-			<file name="includes/bbdkp/portal/mainmenublock.php"/>
-			<file name="includes/bbdkp/portal/lootblock.php"/>
-			<file name="includes/bbdkp/portal/loginblock.php"/>
-			<file name="includes/bbdkp/portal/linksblock.php"/>
-			<file name="styles/prosilver/template/dkp/dkpmenu.html"/>
-			<file name="styles/prosilver/template/dkp/leaderboard.html"/>
-			<file name="styles/prosilver/template/dkp/listevents.html"/>
-			<file name="styles/prosilver/template/dkp/listitems.html"/>
-			<file name="styles/prosilver/template/dkp/listmembers.html"/>
-			<file name="styles/prosilver/template/dkp/listraids.html"/>
-			<file name="styles/prosilver/template/dkp/roster.html"/>
-			<file name="styles/prosilver/template/dkp/viewevent.html"/>
-			<file name="styles/prosilver/template/dkp/viewmember.html"/>
-			<file name="styles/prosilver/template/dkp/viewnews.html"/>
-			<file name="styles/prosilver/template/dkp/viewraid.html"/>
-		</delete>
-		<open src="includes/functions.php">
-			<edit>
-				<comment lang="en"><![CDATA[updating links]]></comment>
-				<comment lang="en"><![CDATA[mise a jour liens]]></comment>
-				<comment lang="en"><![CDATA[Links]]></comment>
-				<find><![CDATA[		'U_DKP'			=> append_sid("{$phpbb_root_path}listmembers.$phpEx"),]]></find>
-				<inline-edit>
-					<inline-find><![CDATA[listmembers.$phpEx"]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[dkp.$phpEx", 'page=standings']]></inline-action>
-				</inline-edit>
-			</edit>
-		</open>
-				<php-installer><![CDATA[install/index.php]]></php-installer>
+		<php-installer><![CDATA[install/index.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Please see the full installation and upgrade instructions here : /docs/install.html
 What has changed ? see here : /docs/changelog.html
 
 Post-install instructions : 
-1) Run bbDKP 1.2.3 database update : install/index.php 
+1) Run bbDKP 1.2.4 database update : install/index.php 
 2) delete the install folder. 
 		Enjoy ;)]]></diy-instructions>
 <diy-instructions lang="fr"><![CDATA[le guide de mise à jour : /docs/install.html

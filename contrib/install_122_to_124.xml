@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[bbDKP 1.2.2 to 1.2.4]]></title>
+		<description lang="en"><![CDATA[Update script 1.2.2 to 1.2.4]]></description>
+		<description lang="fr"><![CDATA[mise à jour 1.2.2 vers 1.2.4]]></description>
+		<description lang="de"><![CDATA[Aktualisierung 1.2.2 bis 1.2.4]]></description>
+		<author-notes lang="en"><![CDATA[Requires bbdkp 1.2.4, Please read docs/INSTALL.html before beginning]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Requiert bbdkp 1.2.4, Veuillez lire docs/INSTALL.html avant de commencer.]]></author-notes>
+		<author-notes lang="de"><![CDATA[benötigt bbdkp 1.2.4, Bitte lesen sie docs/INSTALL.html bevor.]]></author-notes>
+		<author-group>
+			<author>
+				<realname><![CDATA[Andy Vandenberghe]]></realname>
+				<username><![CDATA[Sajaki]]></username>
+				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
+				<email><![CDATA[sajaki9@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="current" from="2008-04-04" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[Steffen]]></realname>
+				<username><![CDATA[Blazeflack]]></username>
+				<homepage><![CDATA[http://aegis.dk]]></homepage>
+				<email><![CDATA[blazeflack@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="current" from="2010-06-01" position="Supporter"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[Kevin Rushin]]></realname>
+				<username><![CDATA[Malfate / Medraut]]></username>
+				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
+				<email><![CDATA[cs.krushin@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="past" from="2007-12-27" to="2009-01-01" position="Former Leader, bbDKP Supporter"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[Morten Boegeskov]]></realname>
+				<username><![CDATA[Hroar]]></username>
+				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
+				<email><![CDATA[morten.boegeskov@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="past" from="2009-05-01" to="2009-09-04" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<username><![CDATA[Kapli]]></username>
+				<contributions-group>
+					<contributions status="past" from="2008-08-01" to="2009-04-01" position="Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[Teksonic]]></realname>
+				<username><![CDATA[Teksonic]]></username>
+				<contributions-group>
+					<contributions status="past" from="2008-04-06" to="2008-06-01" position="Support Manager/ Previous Developer"/>
+				</contributions-group>
+			</author>
+			<author>
+				<realname><![CDATA[Ippeh]]></realname>
+				<username><![CDATA[Ippeh]]></username>
+				<homepage><![CDATA[http://www.explodinglabrats.com/]]></homepage>
+				<email><![CDATA[ippe.he@gmail.com]]></email>
+				<contributions-group>
+					<contributions status="past" from="2007-12-24" to="2008-10-01" position="bbDKP Project Founder, Previous Developer"/>
+				</contributions-group>
+			</author>
+		</author-group>
+		<mod-version>1.2.4</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>600</time>
+			<target-version>3.0.8</target-version>
+		</installation>
+		<link-group>
+			<link type="template" href="install_122_to_124_subsilver2.xml" lang="en">subsilver2 Update</link>
+			<link type="template" href="install_122_to_124_subsilver2.xml" lang="fr">Mise à jour Subsilver2</link>
+			<link type="template" href="install_122_to_124_subsilver2.xml" lang="de">Aktualisierung Subsilver2</link>
+			<link type="parent" href="../install.xml" lang="de">Frisch-Installations-Anleitung</link>
+			<link type="parent" href="../install.xml" lang="en">Clean-Installation Manual</link>
+			<link type="parent" href="../install.xml" lang="fr">Manuel de première installation</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/dkp.php" to="dkp.php"/>
+			<file from="root/portal.php" to="portal.php"/>
+			<file from="root/install/*.*" to="install/*.*"/>
+			<file from="root/adm/findclassrace.php" to="adm/findclassrace.php"/>
+			<file from="root/adm/findfaction.php" to="adm/findfaction.php"/>
+			<file from="root/adm/mods/bbdkp_check_version.php" to="adm/mods/bbdkp_check_version"/>
+			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
+			<file from="root/images/pchart/*.*" to="images/pchart/*.*"/>
+			<file from="root/images/class_images/*.*" to="images/class_images/*.*"/>
+			<file from="root/images/race_images/*.*" to="images/race_images/*.*"/>
+			<file from="root/images/roster_classes/*.*" to="images/roster_classes/*.*"/>
+			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>
+			<file from="root/includes/bbdkp/bbdkpfunctions.php" to="includes/bbdkp/bbdkpfunctions.php"/>
+			<file from="root/includes/bbdkp/bbdkp.php" to="includes/bbdkp/bbdkp.php"/>
+			<file from="root/includes/bbdkp/block/*.*" to="includes/bbdkp/block/*.*"/>
+			<file from="root/includes/bbdkp/module/*.*" to="includes/bbdkp/module/*.*"/>
+			<file from="root/includes/bbdkp/pchart/*.*" to="includes/bbdkp/pchart/*.*"/>			
+			<file from="root/includes/ucp/*.*" to="includes/ucp/*.*"/>
+			<file from="root/includes/ucp/info/*.*" to="includes/ucp/info/*.*"/>
+			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
+			<file from="root/styles/prosilver/theme/bbdkp.css" to="styles/prosilver/theme/bbdkp.css"/>
+			<file from="root/styles/prosilver/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
+			<file from="root/styles/prosilver/template/dkp/module/*.*" to="styles/prosilver/template/dkp/module/*.*"/>
+			<file from="root/styles/prosilver/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>
+			<file from="root/umil/*.*" to="umil/*.*"/>
+		</copy>
+		<delete>
+			<file name="listevents.php"/>
+			<file name="listitems.php"/>
+			<file name="listmembers.php"/>
+			<file name="listraids.php"/>
+			<file name="roster.php"/>
+			<file name="stats.php"/>
+			<file name="viewevent.php"/>
+			<file name="viewitem.php"/>
+			<file name="viewmember.php"/>
+			<file name="viewnews.php"/>
+			<file name="viewraid.php"/>
+			<file name="adm/style/dkp/acp_addnews.html"/>
+			<file name="adm/style/dkp/acp_listnews.html"/>
+			<file name="includes/acp/acp_dkp_news.php"/>
+			<file name="includes/acp/info/acp_dkp_news.php"/>
+			<file name="includes/bbdkp/portal/whoisonline.php"/>
+			<file name="includes/bbdkp/portal/userblock.php"/>
+			<file name="includes/bbdkp/portal/recruitmentblock.php"/>
+			<file name="includes/bbdkp/portal/newsblock.php"/>
+			<file name="includes/bbdkp/portal/mainmenublock.php"/>
+			<file name="includes/bbdkp/portal/lootblock.php"/>
+			<file name="includes/bbdkp/portal/loginblock.php"/>
+			<file name="includes/bbdkp/portal/linksblock.php"/>
+			<file name="styles/prosilver/template/dkp/dkpmenu.html"/>
+			<file name="styles/prosilver/template/dkp/leaderboard.html"/>
+			<file name="styles/prosilver/template/dkp/listevents.html"/>
+			<file name="styles/prosilver/template/dkp/listitems.html"/>
+			<file name="styles/prosilver/template/dkp/listmembers.html"/>
+			<file name="styles/prosilver/template/dkp/listraids.html"/>
+			<file name="styles/prosilver/template/dkp/roster.html"/>
+			<file name="styles/prosilver/template/dkp/viewevent.html"/>
+			<file name="styles/prosilver/template/dkp/viewmember.html"/>
+			<file name="styles/prosilver/template/dkp/viewnews.html"/>
+			<file name="styles/prosilver/template/dkp/viewraid.html"/>
+		</delete>
+		<open src="includes/functions.php">
+			<edit>
+				<comment lang="en"><![CDATA[updating links]]></comment>
+				<comment lang="en"><![CDATA[mise a jour liens]]></comment>
+				<comment lang="en"><![CDATA[Links]]></comment>
+				<find><![CDATA[		'U_DKP'			=> append_sid("{$phpbb_root_path}listmembers.$phpEx"),]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[listmembers.$phpEx"]]></inline-find>
+					<inline-action type="replace-with"><![CDATA[dkp.$phpEx", 'page=standings']]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+				<php-installer><![CDATA[install/index.php]]></php-installer>
+		<diy-instructions lang="en"><![CDATA[Please see the full installation and upgrade instructions here : /docs/install.html
+What has changed ? see here : /docs/changelog.html
+
+Post-install instructions : 
+1) Run bbDKP 1.2.4 database update : install/index.php 
+2) delete the install folder. 
+		Enjoy ;)]]></diy-instructions>
+<diy-instructions lang="fr"><![CDATA[le guide de mise à jour : /docs/install.html
+Liste des changements : /docs/changelog.html
+
+1) lancer la mise à jour : install/index.php 
+2) Supprimer le repertoire /install pour réactiver le forum.]]></diy-instructions>
+<diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
+Liste der änderungen : /docs/changelog.html
+
+1) Datenbank aktualisierung : install/index.php 
+2) lösche das Installations-Verzeichnis „install"]]></diy-instructions>
+	</action-group>
+</mod>
