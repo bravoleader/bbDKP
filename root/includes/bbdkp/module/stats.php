@@ -304,96 +304,6 @@ $template->assign_vars(array(
     )
 );
 
-if ($member_count> 0)
-{
-	// pChart library inclusions
-	include($phpbb_root_path . 'includes/bbdkp/pchart/class/pData.class.' . $phpEx);
-	include($phpbb_root_path . 'includes/bbdkp/pchart/class/pDraw.class.' . $phpEx);
-	include($phpbb_root_path . 'includes/bbdkp/pchart/class/pImage.class.' . $phpEx);
-	include($phpbb_root_path . 'includes/bbdkp/pchart/class/pScatter.class.' . $phpEx);
-	include($phpbb_root_path . 'includes/bbdkp/pchart/class/pCache.class.' . $phpEx);
-	
-	/* chart generation */
-	
-	 /* Create and populate the pData object */
-	 $MyData = new pData();  
-	
-	 /* for each member, add point array */
-	  if($config['bbdkp_epgp'] == 1)
-	 {
-		 $MyData->addPoints($_member_pr_g,"Priority");
-	     $MyData->setAxisName(0,"Priority");
-	 }
-	 else
-	 {
-		 $MyData->addPoints($_member_current_g,"DKP");
-		 $MyData->setAxisName(0,"DKP");
-		 
-	 }
-		
-	 $MyData->addPoints(  $membername_g ,"Members");
-	 $MyData->setSerieDescription("Members","Member");
-	 $MyData->setAbscissa("Members"); 
-	 $MyData->setAbscissaName("Members");
-	 $MyData->setAxisDisplay(0,AXIS_FORMAT_METRIC,1); 
-	 
-	 $pallette = $phpbb_root_path . "includes/bbdkp/pchart/palettes";
-	 $MyData->loadPalette("$pallette/navy.color", TRUE);
-
-	 $imagepath0= $phpbb_root_path . "images/pchart/vchart.png";
- 	// render it ! 		 
-	 
-	/* Create the pChart object */
-	 $myPicture = new pImage(440,500,$MyData);
-	 
-	 /* make a background gradient */
-	 $myPicture->drawGradientArea(0,0,440,500,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
-	 $myPicture->drawGradientArea(0,0,440,500,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20));
-	 
-	 /* Define the chart font */ 
-	 $chartfont = $phpbb_root_path . "includes/bbdkp/pchart/fonts/pf_arma_five.ttf"; 
-	 $myPicture->setFontProperties(array(
-	  	"FontName"=> $chartfont ,
-	  	"FontSize"=> 6));
-	
-	/* Draw the scale  */
-	 $myPicture->setGraphArea(100,30,420,480);
-	 $myPicture->drawScale(array("CycleBackground"=>TRUE,"DrawSubTicks"=>TRUE,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10,"Pos"=>SCALE_POS_TOPBOTTOM)); // 
-	 
-	 /* Turn on shadow computing */ 
-	 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
-	
-	 /* Draw the chart */
-	 $settings = array(
-	 	"Gradient"=>TRUE,
-	 	"DisplayPos"=>LABEL_POS_INSIDE,
-	 	"DisplayValues"=>TRUE,
-	 	"DisplayR"=>255,
-	 	"DisplayG"=>255,
-	 	"DisplayB"=>255,
-	 	"DisplayShadow"=>TRUE,
-	 	"Surrounding"=>5);
-	 //$myPicture->drawBarChart($settings);
-	
-	  /* Draw the line and plot chart */
-	 $myPicture->drawSplineChart();
-	 $myPicture->drawPlotChart();
-	 
-	  /* Write the chart legend */
-	 $myPicture->drawLegend(570,215,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
-	 
-	 /* Render the picture */
-	 $myPicture->render($imagepath0);
-	 unset($myPicture);
-	 unset($MyData); 
-	
-	/* send information to template */
-	$template->assign_vars(array(
-		'CHART0'   => $imagepath0,
-	    )
-	);
-		
-}
 
 /***********************
  *  
@@ -504,86 +414,6 @@ while ($row = $db->sql_fetchrow($result) )
     );
 }
 
-if ($classcount > 0)
-{
-	/* chart generation */
-	
-	/* CAT:Bar Chart */
-	 unset($myPicture);
-	 unset($MyData); 
-	 /* Create the pData object
-	 
-	 /* Create and populate the pData object */
-	 $MyData = new pData();  
-	
-	 /* for each class, add point array */
-	 $MyData->addPoints($classpct_g,"Class%");
-	 $MyData->addPoints( $class_drop_pct_g,"Drop%");
-	 $MyData->setAxisName(0,"%");
-	 
-	 $MyData->addPoints(  $classname_g ,"Classes");
-	 $MyData->setSerieDescription("Classes","Class");
-	 $MyData->setAbscissa("Classes"); 
-	 
-	 $pallette = $phpbb_root_path . "includes/bbdkp/pchart/palettes";
-	 $MyData->loadPalette("$pallette/blind.color", TRUE);
-	
-	 $imagepath= $phpbb_root_path . "images/pchart/classchart.png";
-	 // Create the pChart object
-	 $myPicture = new pImage(440,500,$MyData);
-	 
-	 // make a background gradient 
-	 $myPicture->drawGradientArea(0,0,440,500,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
-	 $myPicture->drawGradientArea(0,0,440,500,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20));
-	 
-	 // set the fonts
-	 $fonttitle = $phpbb_root_path . "includes/bbdkp/pchart/fonts/Forgotte.ttf";
-	 $myPicture->setFontProperties(array(
-	 	"FontName" => $fonttitle,
-	 	"FontSize" =>15));
-	 // draw the title
-	 //$myPicture->drawText(20,34,"Class participation vs. Class droprate",array("FontSize"=>20));
-	
-	 /* Define the chart font */ 
-	 $chartfont = $phpbb_root_path . "includes/bbdkp/pchart/fonts/pf_arma_five.ttf"; 
-	 $myPicture->setFontProperties(array(
-	  	"FontName"=> $chartfont ,
-	  	"FontSize"=> 6));
-	
-	/* Draw the scale  */
-	 $myPicture->setGraphArea(50,30,420,490);
-	 $myPicture->drawScale(array("CycleBackground"=>TRUE,"DrawSubTicks"=>TRUE,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10));
-	
-	 /* Turn on shadow computing */ 
-	 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
-	
-	 /* Draw the chart */
-	 $settings = array(
-	 	"Gradient"=>TRUE,
-	 	"DisplayPos"=>LABEL_POS_INSIDE,
-	 	"DisplayValues"=>TRUE,
-	 	"DisplayR"=>255,
-	 	"DisplayG"=>255,
-	 	"DisplayB"=>255,
-	 	"DisplayShadow"=>TRUE,
-	 	"Surrounding"=>5);
-	 $myPicture->drawBarChart($settings);
-		
-	 /* Write the chart legend */
-	 $myPicture->drawLegend(100,12,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
- 		 		 
-	 /* Render the picture */
-	 $myPicture->render($imagepath);
-	 unset($myPicture);
-	 unset($MyData); 
-
-	/* send information to template */
-	$template->assign_vars(array(
-		'CHART1'   => $imagepath,
-	    )
-	);
-		
-}
 
 /***********************
  *  
@@ -820,80 +650,17 @@ if($attendance > 0)
 		'RAIDS_X3_DAYS'	  => sprintf($user->lang['RAIDS_X_DAYS'],  $config['bbdkp_list_p1']),
 	));
 	
-	 /* Create and populate the pData object */
-	 $MyData = new pData();  
-	
-	 $MyData->addPoints($attlife__g,$user->lang['ATTENDANCE_LIFETIME']);
-	 $MyData->addPoints($att90__g, sprintf($user->lang['RAIDS_X_DAYS'],  $config['bbdkp_list_p3']));
-	 $MyData->addPoints($att60__g, sprintf($user->lang['RAIDS_X_DAYS'],  $config['bbdkp_list_p2']));
-	 $MyData->addPoints($att30__g, sprintf($user->lang['RAIDS_X_DAYS'],  $config['bbdkp_list_p1']));
-	 $MyData->setAxisName(0,$user->lang['RAID_ATTENDANCE_HISTORY']);
-	 $MyData->addPoints(  $membername_g ,"Members");
-	 
-	 $MyData->setSerieDescription("Members","Member");
-	 
-	 $MyData->setAbscissa("Members"); 
-	 $MyData->setAbscissaName("Members");
-	 $MyData->setAxisDisplay(0,AXIS_FORMAT_METRIC,1); 
-	  
-	 $pallette = $phpbb_root_path . "includes/bbdkp/pchart/palettes";
-	 $MyData->loadPalette("$pallette/navy.color", TRUE);
-	 
-	 $imagepath= $phpbb_root_path . "images/pchart/attendancechart.png";
-	 /* Create the pChart object */
-	 $myPicture = new pImage(420,500,$MyData);
-	 
-	 /* make a background gradient */
-	 $myPicture->drawGradientArea(0,0,420,500,DIRECTION_VERTICAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>100));
-	 $myPicture->drawGradientArea(0,0,420,500,DIRECTION_HORIZONTAL,array("StartR"=>240,"StartG"=>240,"StartB"=>240,"EndR"=>180,"EndG"=>180,"EndB"=>180,"Alpha"=>20));
-	 
-	 /* Define the chart font */ 
-	 $chartfont = $phpbb_root_path . "includes/bbdkp/pchart/fonts/pf_arma_five.ttf"; 
-	 $myPicture->setFontProperties(array(
-	  	"FontName"=> $chartfont ,
-	  	"FontSize"=> 6));
-	
-	/* Draw the scale  */
-	 $myPicture->setGraphArea(100,30,400,480);
-	 $myPicture->drawScale(array("CycleBackground"=>TRUE,"DrawSubTicks"=>TRUE,"GridR"=>0,"GridG"=>0,"GridB"=>0,"GridAlpha"=>10,"Pos"=>SCALE_POS_TOPBOTTOM)); // 
-	 
-	 /* Turn on shadow computing */ 
-	 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
-	 
- 		 		
-	  /* Draw the line and plot chart */
-	 $myPicture->drawSplineChart();
-	 $myPicture->drawPlotChart();
-	 
-	  /* Write the chart legend */
-	 $myPicture->drawLegend(570,215,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
- 	
-	 /* Render the picture */
-	 
-	 $myPicture->render($imagepath0);
-	 unset($myPicture);
-	 unset($MyData); 
-		
-	 
-	/* send information to template */
-	$template->assign_vars(array(
-		'CHART2'   => $imagepath,
-	    )
-	);
-	
 }
 
 /* send information to template */
 $template->assign_vars(array(
-   	'S_DISPLAY_STATS'		=> true,
+	'S_DISPLAY_STATS'		=> true,
 	'F_STATS' => $u_stats,
-
 	'U_STATS' => append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=stats'),
     'SHOW' => ( isset($_GET['show']) ) ? request_var('show', '') : '',
 	'TOTAL_MEMBERS' 	=> $total_members, 
 	'TOTAL_DROPS' 		=> $total_drops, 
 	'CLASSPCTCUMUL'		=> round($class_drop_pct_cum), 
-
     )
 );
 
