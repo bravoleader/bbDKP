@@ -161,7 +161,7 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 		<installation>
 			<level>advanced</level>
 			<time>1200</time>
-			<target-version>3.0.8</target-version>
+			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
 			<link type="template" href="contrib/subsilver2.xml" lang="en">subsilver2</link>

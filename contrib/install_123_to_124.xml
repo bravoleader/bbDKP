@@ -77,7 +77,7 @@
 		<installation>
 			<level>easy</level>
 			<time>600</time>
-			<target-version>3.0.8</target-version>
+			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
 			<link type="template" href="install_123_to_124_subsilver2.xml" lang="en">subsilver2 Update</link>
@@ -95,7 +95,7 @@
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/adm/findclassrace.php" to="adm/findclassrace.php"/>
 			<file from="root/adm/findfaction.php" to="adm/findfaction.php"/>
-			<file from="root/adm/mods/bbdkp_check_version.php" to="adm/mods/bbdkp_check_version"/>
+			<file from="root/adm/mods/bbdkp_check_version.php" to="adm/mods/bbdkp_check_version.php"/>
 			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
 			<file from="root/images/pchart/*.*" to="images/pchart/*.*"/>
 			<file from="root/images/class_images/*.*" to="images/class_images/*.*"/>
