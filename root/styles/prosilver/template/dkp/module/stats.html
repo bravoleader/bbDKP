@@ -1,3 +1,29 @@
+<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="{T_TEMPLATE_PATH}/dkp/flot/excanvas.min.js"></script><![endif]-->
+<script src="{T_TEMPLATE_PATH}/dkp/flot/jquery.flot.js" language="javascript" type="text/javascript"></script> 
+<script src="{T_TEMPLATE_PATH}/dkp/flot/jquery.flot.valuelabels.js" language="javascript" type="text/javascript"></script> 
+<!-- 
+Credits : the Stats page uses Flot from http://code.google.com/p/flot/ and improved Valuelabels from https://github.com/leonardoeloy/flot-valuelabels
+-->
+<style  type="text/css">
+/* css for flot */
+.valueLabels {
+	font-size:70%;
+	color:black;
+}
+
+div.valueLabelLight {
+	opacity:0.5;
+	background-color: white;
+	border:none;
+	position:absolute;
+}
+
+div.valueLabel {
+	position:absolute;
+	border:none;
+}
+</style>
+
 <form method="post" action="{F_STATS}">
 
 <div class="forabg" >
@@ -84,10 +110,44 @@
 <div class="panel" style="width:45%; float:left;">
 <div class="inner">
 <span class="corners-top"><span></span></span>
-<img src="{CHART0}" align="middle" alt="" border="2" />
+<div id="memberstats"></div>
+
+<script type="text/javascript">
+$(function () {
+	/* declare data */
+	 var data = [[<!-- BEGIN stats_row -->[{stats_row.COUNT},<!-- IF S_SHOWEPGP -->{stats_row.PR}<!-- ELSE -->{stats_row.CURRENT}<!-- ENDIF -->], <!-- END stats_row -->]];
+	 var members = [[<!-- BEGIN stats_row -->[{stats_row.COUNT},"{stats_row.NAME}"], <!-- END stats_row -->]];  
+	/* declare plotarea */
+	 var options = { bars: { show: true, barWidth: 0.4, fill: 0.5 }, 
+			    xaxis: { ticks: [], autoscaleMargin: 0.02 },
+		        yaxis: { min: 1, max: 250 }};  
+	/* declare plotarea */
+
+	 var plotarea = $("#memberstats");  
+
+	 plotarea.css("height", "250px");  
+	 plotarea.css("width", "500px");  
+	 	  
+	 var plot = $.plot( plotarea , data, options ); 
+	  
+	 $.each(plot.getData()[0].data, function(i, el)
+			 {
+		  var o = plot.pointOffset({x: el[0], y: el[1]});
+		  $('<div class="data-point-label">' + el[1] + '</div>').css( {
+		    position: 'absolute',
+		    left: o.left + 4,
+		    top: o.top - 43,
+		    display: 'none'
+		  }).appendTo(plot.getPlaceholder()).fadeIn('slow');
+		});
+});
+</script>
+
 <span class="corners-bottom"><span></span></span>
 </div>
 </div>
+
+
 
 <div style="clear:both;"></div>
 <br />
