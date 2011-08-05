@@ -111,7 +111,6 @@ div.valueLabel {
 <div class="inner">
 <span class="corners-top"><span></span></span>
 <div id="memberstats"></div>
-
 <script type="text/javascript">
 $(function () {
 	/* declare data */
@@ -119,18 +118,17 @@ $(function () {
 	 var members = [[<!-- BEGIN stats_row -->[{stats_row.COUNT},"{stats_row.NAME}"], <!-- END stats_row -->]];  
 	/* declare plotarea */
 	 var options = { bars: { show: true, barWidth: 0.4, fill: 0.5 }, 
-			    xaxis: { ticks: [], autoscaleMargin: 0.02 },
-		        yaxis: { min: 1, max: 250 }};  
-	/* declare plotarea */
-
-	 var plotarea = $("#memberstats");  
-
-	 plotarea.css("height", "250px");  
-	 plotarea.css("width", "500px");  
-	 	  
-	 var plot = $.plot( plotarea , data, options ); 
-	  
-	 $.each(plot.getData()[0].data, function(i, el)
+		        yaxis: { min: 1, max: 250 } 
+			    xaxis: {ticks: [ <!-- BEGIN stats_row -->[{stats_row.COUNT},'{stats_row.NAME}'],<!-- END stats_row --> ]
+				, autoscaleMargin: 0.02}
+				};
+	var plotarea = $("#memberstats");  
+	plotarea.css("height", "250px");  
+	plotarea.css("width", "500px");  
+	/* print chart */
+	var plot = $.plot( plotarea , data, options ); 
+	/* print amount label */
+	$.each(plot.getData()[0].data, function(i, el)
 			 {
 		  var o = plot.pointOffset({x: el[0], y: el[1]});
 		  $('<div class="data-point-label">' + el[1] + '</div>').css( {
