@@ -231,6 +231,7 @@ $memberraidcount_g = array();
 $memberattendancepct_g = array();
 $membername_g = array();
 $raid_count=  0;
+$totalcount = $db->sql_affectedrows($members_result);
 while ( $row = $db->sql_fetchrow($members_result) )
 {
 	$member_count++;
@@ -246,12 +247,14 @@ while ( $row = $db->sql_fetchrow($members_result) )
 	$member_drop_pct_g[]=$member_drop_pct; 
 	$_member_pr_g[] = $row['pr'];
 	$_member_current_g[] = $row['member_current'];
+	
     $template->assign_block_vars('stats_row', array(
+    	'TOTALCOUNT'			=> $totalcount, 
         'NAME' 					=> $row['member_name'],
         'U_VIEW_MEMBER' 		=> append_sid("{$phpbb_root_path}dkp.$phpEx" , 'page=viewmember&amp;' .URI_DKPSYS . '=' . $row['member_dkpid'] . '&amp;' . URI_NAMEID . '='.$row['member_id']),    
     	'COLORCODE'				=> $row['colorcode'],
     	'ID'            		=> $row['member_id'],
-	    'COUNT'         		=> ($row[$previous_source] == $previous_data) ? '&nbsp;' : $member_count,
+	    'COUNT'         		=> $member_count,
         'ATTENDED_COUNT' 		=> $row['member_raidcount'],
     	'ITEM_COUNT' 			=> $row['itemcount'],
     	'MEMBER_DROP_PCT'		=> sprintf("%s %%", $member_drop_pct),
@@ -263,7 +266,7 @@ while ( $row = $db->sql_fetchrow($members_result) )
         'GP_PER_DAY' 			=> sprintf("%.2f", $row['gp_per_day']),
         'GP_PER_RAID' 			=> sprintf("%.2f", $row['gp_per_raid']),
         'PR'			 		=> sprintf("%.2f", $row['pr']),
-        'CURRENT' 				=> $row['member_current'], 
+        'CURRENT' 				=> intval($row['member_current']), 
         'C_CURRENT'				=> ($row['member_current'] > 0 ? 'positive' : 'negative'), 
     )
     );
@@ -307,7 +310,7 @@ $template->assign_vars(array(
 
 /***********************
  *  
- *  Class Statistics 
+ *  Class Drop Statistics 
  *  
  **********************/
 
@@ -339,9 +342,14 @@ from ((" . MEMBER_DKP_TABLE . " d left join
 SELECT i.member_id, count(i.item_id) as itemcount
 FROM 
 ((" . EVENTS_TABLE ." e inner join ". RAIDS_TABLE ." r on e.event_id=r.event_id)
-inner join " . RAID_ITEMS_TABLE . " i on  r.raid_id = i.raid_id )
-WHERE e.event_dkpid = 3 
-GROUP BY i.member_id
+inner join " . RAID_ITEMS_TABLE . " i on  r.raid_id = i.raid_id ) ";
+
+if ($query_by_pool)
+{
+     $sql .= ' WHERE e.event_dkpid = '. $dkp_id . ' ';
+}
+
+$sql .= " GROUP BY i.member_id
 ) x
 on d.member_id = x.member_id)
 INNER JOIN " . MEMBER_LIST_TABLE . " l on l.member_id = d.member_id
@@ -403,10 +411,12 @@ while ($row = $db->sql_fetchrow($result) )
         'CLASS_NAME'		=> $row['class_name'],
 		
         'CLASS_COUNT' 		=> (int) $class_count,
-        'CLASS_PCT' 		=> sprintf("%s %%", $classpct ),
+		'CLASS_PCT' 		=> $classpct,
+        'CLASS_PCT_STR' 	=> sprintf("%s %%", $classpct ),
     
         'LOOT_COUNT' 		=> $loot_drops,
-    	'CLASS_DROP_PCT'	=> sprintf("%s %%", $class_drop_pct  ),
+       	'CLASS_DROP_PCT'	=> $class_drop_pct,
+    	'CLASS_DROP_PCT_STR' => sprintf("%s %%", $class_drop_pct  ),
     
     	'C_LOOT_FACTOR'		=> ($lootoverrun < 	0) ? 'negative' : 'positive', 
        	'LOOTOVERRUN'		=> sprintf("%s %%", $lootoverrun), 
@@ -627,16 +637,20 @@ while ( $row = $db->sql_fetchrow($result) )
 	    'LASTRAID' 				=> $row['member_lastraid'],
     	'GRCTLIFE' 				=> $row['gloraidcountlife'],
 	    'IRCTLIFE' 				=> $row['iraidcountlife'],
-	    'ATTLIFE' 				=> sprintf("%.2f%%", $row['attendancelife']),
+	    'ATTLIFESTR' 			=> sprintf("%.2f%%", $row['attendancelife']),
+    	'ATTLIFE' 				=> sprintf("%.2f", $row['attendancelife']),
     	'GRCT90' 				=> $row['gloraidcount90'],
 	    'IRCT90' 				=> $row['iraidcount90'],
-	    'ATT90' 				=> sprintf("%.2f%%", $row['attendance90']),
+	    'ATT90STR' 				=> sprintf("%.2f%%", $row['attendance90']),
+    	'ATT90' 				=> sprintf("%.2f", $row['attendance90']),
     	'GRCT60' 				=> $row['gloraidcount60'],
 	    'IRCT60' 				=> $row['iraidcount60'],
-	    'ATT60' 				=> sprintf("%.2f%%", $row['attendance60']),
+	    'ATT60STR' 				=> sprintf("%.2f%%", $row['attendance60']),
+    	'ATT60' 				=> sprintf("%.2f", $row['attendance60']),
     	'GRCT30' 				=> $row['gloraidcount30'],
 	    'IRCT30' 				=> $row['iraidcount30'],
-	    'ATT30' 				=> sprintf("%.2f%%", $row['attendance30']),   
+	    'ATT30STR' 				=> sprintf("%.2f%%", $row['attendance30']),
+    	'ATT30' 				=> sprintf("%.2f", $row['attendance30']), 
     )
     );
 
