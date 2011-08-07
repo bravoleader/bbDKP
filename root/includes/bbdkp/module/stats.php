@@ -220,10 +220,10 @@ $sql .= " GROUP BY c.game_id,  c.colorcode,  c.imagename, c.class_id, l.member_i
 
 $sql .= " ORDER BY " . $current_order['sql'];
 
-if ( !($members_result = $db->sql_query($sql)) )
-{
-    trigger_error ($user->lang['MNOTFOUND']);
-}
+$startd = request_var ( 'startdkp', 0 );
+$members_result = $db->sql_query_limit ( $sql, 20, $startd );
+$totalcount = $db->sql_affectedrows($members_result);
+$dkppagination = generate_pagination2($u_stats . '&amp;o=' . $current_order ['uri'] ['current'] , $totalcount, 15, $startd, true, 'startdkp'  );
 
 $member_count = 0;
 
@@ -231,7 +231,9 @@ $memberraidcount_g = array();
 $memberattendancepct_g = array();
 $membername_g = array();
 $raid_count=  0;
-$totalcount = $db->sql_affectedrows($members_result);
+
+
+
 while ( $row = $db->sql_fetchrow($members_result) )
 {
 	$member_count++;
@@ -249,6 +251,7 @@ while ( $row = $db->sql_fetchrow($members_result) )
 	$_member_current_g[] = $row['member_current'];
 	
     $template->assign_block_vars('stats_row', array(
+    	
     	'TOTALCOUNT'			=> $totalcount, 
         'NAME' 					=> $row['member_name'],
         'U_VIEW_MEMBER' 		=> append_sid("{$phpbb_root_path}dkp.$phpEx" , 'page=viewmember&amp;' .URI_DKPSYS . '=' . $row['member_dkpid'] . '&amp;' . URI_NAMEID . '='.$row['member_id']),    
@@ -288,6 +291,7 @@ $db->sql_freeresult($members_result);
 
 /* send information to template */
 $template->assign_vars(array(
+	'DKPPAGINATION' 		=> $dkppagination ,
     'O_PR' => append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=stats&amp;o=' . $current_order['uri'][0] . '&amp;' . URI_DKPSYS . '=' . ($query_by_pool ? $dkp_id : 'All')) , 
     'O_CURRENT' => append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=stats&amp;o=' . $current_order['uri'][1] . '&amp;' . URI_DKPSYS . '=' . ($query_by_pool ? $dkp_id : 'All')) , 
     'O_NAME'       => append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=stats&amp;o=' . $current_order['uri'][2] . '&amp;' . URI_DKPSYS . '=' . ($query_by_pool ? $dkp_id : 'All')), 
@@ -617,10 +621,9 @@ ORDER BY
 	sum(CASE e.days WHEN '90' THEN e.attendance END ) desc,
 	e.member_id
 ";
-$startatt = request_var ( 'start', 0 );
+$startatt = request_var ( 'startatt', 0 );
 $result = $db->sql_query_limit ( $sql, 20, $startatt );
-$attpagination = generate_pagination ( $u_stats . '&amp;o=' . $current_order ['uri'] ['current'] , $total_members, 15, $startatt, true );
-	
+$attpagination = generate_pagination2($u_stats . '&amp;o=' . $current_order ['uri'] ['current'] , $total_members, 15, $startatt, true, 'startatt'  );
 $attendance=0;
 while ( $row = $db->sql_fetchrow($result) )
 {

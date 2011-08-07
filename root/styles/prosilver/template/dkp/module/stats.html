@@ -4,6 +4,7 @@
 <script src="{T_TEMPLATE_PATH}/dkp/flot/jquery.flot.pie.min.js" language="javascript" type="text/javascript"></script> 
 <!-- Credits : the Stats page uses Flot from http://code.google.com/p/flot/ -->
 <style  type="text/css">
+
 /* css for flot */
 .valueLabels {
 	font-size:70%;
@@ -30,13 +31,19 @@ div.tickLabel {
     font-family: sans-serif !important;
     font-variant: small-caps !important;
 }
-
-div.graph {
-	float: left;
-	align: center;
-	width:100%;
+.tooltip-with-bg{
+ 	position:relative;
+ 	text-align : center;
+	background-color: #000;
+	margin:0px auto;
+	min-width:100px;
+	max-width:100px; 
+	color:#FFFFDD;
+	z-index:1;
+	margin-left:10px; /* default, width of left corner */
+	margin-bottom:0.5em; /* spacing under dialog */	
+	font-size: 11px;
 }
-
 
 </style>
 
@@ -110,6 +117,7 @@ div.graph {
     <tr class= "bg2">
     <!-- ENDIF -->
     <td><a style="color:{stats_row.COLORCODE}" href="{stats_row.U_VIEW_MEMBER}"><strong>{stats_row.NAME}</strong></a></td>
+    
     <!-- IF S_SHOWEPGP -->
     <td style="font-size :8pt; text-align: center;"><strong>{stats_row.PR}</strong></td>
     <!-- ELSE -->
@@ -125,6 +133,13 @@ div.graph {
 </tbody>
 </table>
 
+<!-- IF DKPPAGINATION -->  
+<div class="pagination">
+		<a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{S_ON_PAGE}</a>
+		<span>{DKPPAGINATION}<br /><br /></span>
+</div>
+<!-- ENDIF -->
+
 <span class="corners-inner-bottom"><span></span></span>
 </div>
 </div>
@@ -134,30 +149,96 @@ div.graph {
 <script type="text/javascript">
 $(function () {
 	 var plotarea = $("#memberstats");  
-	plotarea.css("height", "250px");  
+	plotarea.css("height", "350px");  
 	plotarea.css("width", "100%");
 	 
 	var memberdkp = [<!-- BEGIN stats_row -->[{stats_row.COUNT},<!-- IF S_SHOWEPGP -->{stats_row.PR}<!-- ELSE -->{stats_row.CURRENT}<!-- ENDIF -->]<!-- IF ! stats_row.S_LAST_ROW -->,<!-- ENDIF --><!-- END stats_row -->];
 	var attendance = [<!-- BEGIN stats_row -->[{stats_row.COUNT},{stats_row.ATTENDED_COUNT}]<!-- IF ! stats_row.S_LAST_ROW -->,<!-- ENDIF --><!-- END stats_row -->];
 	var members = [<!-- BEGIN stats_row -->[{stats_row.COUNT},"{stats_row.NAME}"]<!-- IF ! stats_row.S_LAST_ROW -->, <!-- ENDIF --> <!-- END stats_row -->];  
-	var dkpoptions = { xaxis: {ticks: members, autoscaleMargin: 0.05},
-			colors: ["#FFDD00", "#AAFF66", "#FF3366"],
+	var dkpoptions = { 
+			series: {
+				lines: { show: true },
+				points: { show: true }
+			},
+			grid: {
+				series: members,
+	    		hoverable: true 
+			},
+			xaxis: {
+				ticks:  [], 
+				autoscaleMargin: 0.05},
+			colors: ["#6666FF", "#AAFF66", "#FF3366"],
 			yaxes: [{ position: 'left'},
                     { position: 'right'}]
 			};
+
+	//tooltip function
+    function showTooltip(x, y, contents, areAbsoluteXY) {
+        var rootElt = 'body';
+
+        $('<div id="tooltip" class="tooltip-with-bg"><hr />' + contents + '<hr /></div>').css( {
+            position: 'absolute',
+            display: 'none',
+            'z-index':'1010',
+            top: y,
+            left: x
+        }).prependTo(rootElt).show();
+    }
+
+    
 	var plot = $.plot( plotarea , [
-              {
-                  data: memberdkp,
-                  bars: { show: true, barWidth: 70/100, fill: 0.30 },
-                  yaxis:1
-                  
-              },
-              {
-                  data: attendance,
-                  lines: { show: true, fill: false },
-                  yaxis:2
-              }], 
+           {
+               data: memberdkp,
+               bars: { show: true, 
+               		   barWidth: 1, 
+               		   fill: 0.30 },
+               yaxis:1
+               
+           },
+           {
+               data: attendance,
+               lines: { show: true, fill: false,  },
+               points: { show: true } ,
+               yaxis:2
+           }],
 		dkpoptions ); 
+
+	//add tooltip event
+    $("#memberstats").bind("plothover", function (event, pos, item) {
+        if (item) {
+            if (previousPoint != item.datapoint) {
+                previousPoint = item.datapoint;
+
+                //suppression précédent tooltip
+                $('.tooltip-with-bg').remove();
+				
+                var x = item.datapoint[0];
+                
+                //All the bars concerning a same x value must display a tooltip with this value and not the shifted value
+                if(item.series.bars.order){
+                    for(var i=0; i < item.series.data.length; i++)
+                        {
+                        if(item.series.data[i][3] == item.datapoint[0])
+                            x = item.series.data[i][0];
+                    }
+                }
+
+                var y = item.datapoint[1];
+                var members = [<!-- BEGIN stats_row -->[{stats_row.COUNT},"{stats_row.NAME}"]<!-- IF ! stats_row.S_LAST_ROW -->, <!-- ENDIF --> <!-- END stats_row -->];
+				var contents = members[x-1][1] + " :" + y;
+				
+                showTooltip(item.pageX+5, item.pageY+5, contents);
+
+            }
+        }
+        else {
+            $('.tooltip-with-bg').remove();
+            previousPoint = null;
+        }
+
+    });
+
+    
 	
 });
 </script>
@@ -270,26 +351,29 @@ $(function () {
 						show: true,
 						combine: {
 		                    color: '#999',
-		                    threshold: 0.05
+		                    threshold: 0.02
 		                },
-						radius: 1,
+						radius: 100,
 						label: {
 		                    show: true,
-		                    radius: 3/4,
+		                    radius: 1,
 		                    formatter: function(label, series){
 		                        return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
 		                    },
 		                    background: { 
 			                    opacity: 0.5,
 		                    	color: '#000' },
-		                    threshold: 0.1
+		                    threshold: 0.02
 		                    
 		                }
 				}
 		},
 	 	legend: {
             show: false
-        }
+        },
+		grid: {
+    		hoverable: true 
+		},
 	});
 	
 	var classdroppct = [<!-- BEGIN class_row --> {label: "{class_row.CLASS_NAME}" , data : {class_row.CLASS_DROP_PCT}, color : "{class_row.COLORCODE}" } <!-- IF ! class_row.S_LAST_ROW -->, <!-- ENDIF --> <!-- END class_row -->];
@@ -303,24 +387,27 @@ $(function () {
 		                    color: '#999',
 		                    threshold: 0.05
 		                },
-						radius: 1,
+						radius: 100,
 						label: {
 		                    show: true,
-		                    radius: 3/4,
+		                    radius: 1,
 		                    formatter: function(label, series){
 		                        return '<div style="font-size:8pt;text-align:center;padding:2px;color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
 		                    },
 		                    background: { 
 			                    opacity: 0.5,
 		                    	color: '#000' },
-		                    threshold: 0.1
+		                    threshold: 0.02
 		                    
 		                }
 				}
 		},
 	 	legend: {
             show: false
-        }
+        },
+		grid: {
+    		hoverable: true 
+		},
 	});
 	
 });
@@ -457,6 +544,9 @@ $(function () {
 			},
 		lines: { show: true, fill: false },
 		points: { show: true } ,
+		grid: {
+    		hoverable: true 
+		},
 		
 	};
 	<!-- BEGIN attendance_row -->
