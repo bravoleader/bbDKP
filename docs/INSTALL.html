@@ -50,7 +50,10 @@
 <p>Feature list : Portal with widgets, Dashboard, Statistics, Events, Raids, Member, Items, Roster, ACP and UCP modules. multiple games : World of Warcraft, The Lord of the Rings Online, Dark Age of Camelot, Vanguard - Saga of Heroes, EverQuest I/II, Warhammer Online, Final Fantasy XI, AION. </p>
 <p>There are a number of plugins, like Raidtracker, bbTips, Memberimport, Apply, Raidplanner, Bossprogress (under development). </p>
 
-<p>Further development requests, support questions are welcome at http://www.bbdkp.com. As of the current release, it does not (yet) make coffee ;)</p>
+<p>Further development requests, support questions are welcome at <a href="http://www.bbdkp.com">http://www.bbdkp.com</a> or in the the <a href="http://www.phpbb.com/community/viewtopic.php?f=70&t=1487295&p=13027056">phpbb Development topic</a>.</p>
+<p>There is also an IRC channel at #bbdkp@irc.freenode.net and a wiki (<a href="http://wiki.bbdkp.com">http://wiki.bbdkp.com</a>)</p>
+
+As of the current release, it does not (yet) make coffee ;)</p>
 
 <p>Languages included: Englisch (en), French (fr), Deutsch (de)</p>
 
@@ -60,12 +63,13 @@
 <li>Raidtracker 0.3.2 (Plugin)</li> 
 <li>Bossprogress 0.1.1 (Plugin)</li>
 <li>Raidplanner 0.2.0 (Mod)</li>
+<li>Armory Import 2.0 Wow &amp; Aion (Plugin)</li>
+<li>Recruitment 2.0 (Mod)</li>
 </ul>
 
 <b>Mods/Plugins under development : </b>
 <ul type="circle">
-<li>Armory Import 2.0 Wow &amp; Aion (Plugin)</li>
-<li>Recruitment 2.0 (Mod)</li>
+
 </ul>
 
 </div>
@@ -82,6 +86,7 @@
 		<div class="content">
 			<ol>
 			<li>phpbb3.0.5 or higher</li>
+			<li>If you use Mysql then version 5 is required because group functions are used in the order by statement in standings.php</li>			
 			<li>PHP 5.2 -> 5.3.x / Libxml 2.6.0 (simplexml usage)</li>
 			<li>Curl (preferred) or url_fopen or fsockopen should be available on your server.</li>
 			<li>ftp and founder admin access on your phpbb installation. </li>
@@ -108,7 +113,7 @@
 		<strong>Note : Before installing/upgrading bbDKP, you need to backup your forum.</strong>
 		
 		<div class="content">
-			<h2>New 1.2.3 installation </h2>
+			<h2>New 1.2.4 installation </h2>
 			<ul>
 				<li><strong>using Automod</strong>
 				<ol>
@@ -121,7 +126,7 @@
 						<li>Enter your guildname</li>
 						<li>Choose the realm of your guild</li>
 						<li>Choose the games you wish to have installed.</li>
-						<li>Click submit. This will install 1.2.3. and clear the caches (template, theme, imagesets)</li>
+						<li>Click submit. This will install 1.2.4 and clear the caches (template, theme, imagesets)</li>
 						</ul>
 					</li>
 				</ol>
@@ -138,16 +143,16 @@
 						<li>Enter your guildname</li>
 						<li>Choose the realm of your guild</li>
 						<li>Choose the games you wish to have installed.</li>
-						<li>Click submit. This will install 1.2.3. and clear the caches (template, theme, imagesets)</li>
+						<li>Click submit. This will install 1.2.4 and clear the caches (template, theme, imagesets)</li>
 						</ul>
 					</ol>
 
 				</li>
 			</ul>
    
-			<h2>Upgrading from 1.2.2 to 1.2.3</h2>
+			<h2>Upgrading from 1.2.2 to 1.2.4</h2>
 					<p><em>If you have an earlier version, first update to 1.2.2.</em></p>
-			just follow the diff instructions in <a href="../contrib/install_122_to_123.xml">contrib/install_122_to_123.xml</a>
+			just follow the diff instructions in <a href="../contrib/install_122_to_124.xml">contrib/install_122_to_124.xml</a>
 			<ol>
 				<li>copy the new files to your webserver, replacing any old files. </li>
 				<li>apply the (few) changes to the core phpbb files. use a good text editor, like Notepad++  (PC) or Textwrangler (Mac).</li>
@@ -160,6 +165,23 @@
 					<li>Click submit. This will update to 1.2.3. and clear the caches (template, theme, imagesets)</li>
 				</ul>
 			</ol>
+			
+			<h2>Upgrading from 1.2.3 to 1.2.4</h2>
+			just follow the diff instructions in <a href="../contrib/install_123_to_124.xml">contrib/install_123_to_124.xml</a>
+			<ol>
+				<li>copy the new files to your webserver, replacing any old files. </li>
+				<li>apply the (few) changes to the core phpbb files. use a good text editor, like Notepad++  (PC) or Textwrangler (Mac).</li>
+				<li>launch the DB updater (/install/index.php)</li>
+				<li>Now you see the Umil updater. <u>Note there are NO database changes between 1.2.3 and 1.2.4.</u>
+				<ul>
+					<li>Enter your guildname</li>
+					<li>Choose the realm of your guild</li>
+					<li>Check the games you wish to have installed/updated. (deselecting a game you already have will have no effect on your data)</li>
+					<li>Click submit. This will update to 1.2.4 and clear the caches (template, theme, imagesets)</li>
+				</ul>
+			</ol>
+			
+			
 			<h2>Quick Deactivation</h2>
 			<ol>
 			<li>should you wish to Deactivate this Mod quickly you can open configdkp.php and comment out the trigger</li>
@@ -203,6 +225,17 @@
 		<div class="inner"><span class="corners-top"><span></span></span></div>
 		
 		<div class="content">
+1.2.4 15-08-2011<br />
+<br />
+<ul>
+<li>[DEL] Subsilver2 removed from package.</li>
+<li>[NEW] jquery plot library in Statistics page, replaces pstat</li>
+<li>[CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary</li>
+<li>[UPD] jquery updated to 1.6.2</li>
+</ul>
+<br />
+
+
 1.2.3 09-06-2011<br />
 <br />
 <ul>

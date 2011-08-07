@@ -80,9 +80,6 @@
 			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
-			<link type="template" href="install_122_to_124_subsilver2.xml" lang="en">subsilver2 Update</link>
-			<link type="template" href="install_122_to_124_subsilver2.xml" lang="fr">Mise à jour Subsilver2</link>
-			<link type="template" href="install_122_to_124_subsilver2.xml" lang="de">Aktualisierung Subsilver2</link>
 			<link type="parent" href="../install.xml" lang="de">Frisch-Installations-Anleitung</link>
 			<link type="parent" href="../install.xml" lang="en">Clean-Installation Manual</link>
 			<link type="parent" href="../install.xml" lang="fr">Manuel de première installation</link>

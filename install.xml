@@ -164,10 +164,6 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 			<target-version>3.0.9</target-version>
 		</installation>
 		<link-group>
-			<link type="template" href="contrib/subsilver2.xml" lang="en">subsilver2</link>
-			<link type="template" href="contrib/subsilver2.xml" lang="fr">subsilver2</link>
-			<link type="template" href="contrib/subsilver2.xml" lang="de">subsilver2</link>
-
 			<link type="language" lang="en" href="contrib/fr.xml">French</link>
 			<link type="language" lang="fr" href="contrib/fr.xml">Français</link>
 			<link type="language" lang="de" href="contrib/fr.xml">Franzözisch</link>
