@@ -34,6 +34,7 @@ div.tickLabel {
 div.graph {
 	float: left;
 	align: center;
+	width:100%;
 }
 
 
@@ -346,15 +347,17 @@ $(function () {
 <div class="inner">
 <span class="corners-top"><span></span></span>
 
+
 <div class="forabg" style="width:45%; float:left;">
 <div class="inner">
 <span class="corners-inner-top"><span></span></span>
 
 
-<table class="table1" width="90%" border="0" cellspacing="0" cellpadding="0">
+
+<table id="choiceContainer" class="table1" width="90%" border="0" cellspacing="0" cellpadding="0">
 <thead>
 <tr>	  
-    <th colspan="3" style=" width:8%;"><a href="{O_NAME}">{L_NAME}</a></th>
+    <th colspan="4" style=" width:8%;"><a href="{O_NAME}">{L_NAME}</a></th>
     <th colspan="3" style=" width:23%;"><a href="{O_NAME}">{L_ATTENDANCE_LIFETIME}</a></th>
     <th colspan="3" style=" width:23%;">{RAIDS_X1_DAYS}</th>
     <th colspan="3" style=" width:23%;">{RAIDS_X2_DAYS}</th>
@@ -374,6 +377,8 @@ $(function () {
     <tr class= "bg2">
     <!-- ENDIF -->
     <td><a style="color:{attendance_row.COLORCODE}" href="{attendance_row.U_VIEW_MEMBER}"><strong>{attendance_row.NAME}</strong></a></td>
+    <td><input id="idmember{attendance_row.ID}" type="checkbox" checked="checked" name="member{attendance_row.ID}"></td>
+    
     <td style="font-size :8pt; text-align: right;"><strong>{stats_row.FIRSTRAID}</strong></td>
     <td style="font-size :8pt; text-align: right;"><strong>{stats_row.LASTRAID}</strong></td>
     
@@ -399,6 +404,12 @@ $(function () {
 
 </table>
 
+<!-- IF ATTPAGINATION -->  
+<div class="pagination">
+		<a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{S_ON_PAGE}</a>
+		<span>{ATTPAGINATION}<br /><br /></span>
+</div>
+<!-- ENDIF -->
 <span class="corners-inner-bottom"><span></span></span>
 </div>
 </div>
@@ -407,16 +418,16 @@ $(function () {
 <div class="inner">
 <span class="corners-top"><span></span></span>
 
-<div style="width:100%; float:left;">
-<div id="attendanceplot" class="graph"></div>
-
-<p id="choices">Show:</p>
+<div id="legend3" style="width:30%; float:left"></div>
+<div id="attendanceplot" style="width:50%; float;left"  class="graph"></div>
 
 <script type="text/javascript">
 $(function () {
 	var canvas_attendance = $("#attendanceplot");  
-	canvas_attendance.css("height", "700px");  
-	canvas_attendance.css("width", "90%");
+	canvas_attendance.css("height", "600px");  
+	canvas_attendance.css("width", "85%");
+	canvas_attendance.css("margin-left", "5%");
+	canvas_attendance.css("margin-right", "5%");
 	var attnames = [[1, "{L_ATTENDANCE_LIFETIME}"], [2,"{RAIDS_X1_DAYS}"], [3,"{RAIDS_X2_DAYS}"], [4,"{RAIDS_X3_DAYS}"]];
 
 	var coreraider = 60;
@@ -428,18 +439,19 @@ $(function () {
 	var sociallbl = "Can not sign up anymore";
 	
     var markings = [
-        { color: '#DDFFDD', yaxis: { from: coreraider } },
-        { color: '#FFFFFF', yaxis: { from: social , to: coreraider } },
-        { color: '#FFDDDD', yaxis: { to: social } },
+        { color: '#EEEEEE', yaxis: { from: coreraider } },
+        { color: '#CCCCCC', yaxis: { from: social , to: coreraider } },
+        { color: '#AAAAAA', yaxis: { to: social } },
     ];
     
 	var attoptions = { 
 		xaxis: {
-			ticks: attnames, autoscaleMargin: 0.05, 
+			ticks: attnames, autoscaleMargin: 0.30, 
 		} , 
 		yaxis: { min: 0 , max: 100},
 		legend: { 
-			position: 'sw' 
+			position: 'sw' ,
+			 backgroundOpacity: 0
 		},
 		grid: { markings: markings 
 			},
@@ -451,7 +463,7 @@ $(function () {
 	var member{attendance_row.ID} = [[1,{attendance_row.ATTLIFE}],[2,{attendance_row.ATT90}],[3,{attendance_row.ATT60}],[4,{attendance_row.ATT30}]];<!-- END attendance_row -->
 
 	    
-	var dataset = {
+	var datasets = {
 	<!-- BEGIN attendance_row -->
 	"member{attendance_row.ID}" :	{data: [[1,{attendance_row.ATTLIFE}],[2,{attendance_row.ATT90}],[3,{attendance_row.ATT60}],[4,{attendance_row.ATT30}]],
 		label: "{attendance_row.NAME}",
@@ -459,19 +471,12 @@ $(function () {
 		}<!-- IF ! attendance_row.S_LAST_ROW -->, 
 	<!-- ENDIF -->
 	 <!-- END attendance_row -->
-			};
+		};
 
-	// loop datasets, add html 
-	var choiceContainer = $("#choices");
-	 $.each(datasets, function(key, val) {
-	        choiceContainer.append('<br/><input type="checkbox" name="' + key +
-	                               '" checked="checked" id="id' + key + '">' +
-	                               '<label for="id' + key + '">'
-	                                + val.label + '</label>');
-	  });
+	var choiceContainer = $("#choiceContainer");
 	choiceContainer.find("input").click(plotAccordingToChoices);
-
-	 // insert checkboxes 
+	plotAccordingToChoices();
+	
 	function plotAccordingToChoices() {
 	        var data = [];
 
@@ -483,46 +488,26 @@ $(function () {
 
 	        if (data.length > 0)
 			{
-	            $.plot(canvas_attendance, data, attoptions);
+	        	var plot = $.plot(canvas_attendance, data, attoptions);
+
+	        	var o;
+			    
+			    o = plot.pointOffset({ x: 2, y: social - 5});
+			    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + sociallbl + '</div>');
+			 
+			    o = plot.pointOffset({ x: 2, y: raidsupport - 5});
+			    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + raidsupportlbl + '</div>');
+			
+			    o = plot.pointOffset({ x: 2, y: coreraider + 10});
+			    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + coreraiderlbl + ' </div>');
 			}
-	    }
-	 plotAccordingToChoices();
-	    
-    /*
-	var plot = $.plot(canvas_attendance, 
-	[<!-- BEGIN attendance_row -->{
-			data: member{attendance_row.ID} ,
-			color: "{attendance_row.COLORCODE}" , 
-			label: "{attendance_row.NAME}", 
-			 }<!-- IF ! attendance_row.S_LAST_ROW -->, 
-	<!-- ENDIF --><!-- END attendance_row -->], 
-		attoptions); 
-	*/
-
-
-
+	 }
 	
 	// add labels
-    var o;
-
-    
-    o = plot.pointOffset({ x: 2, y: social - 5});
-    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + sociallbl + '</div>');
- 
-    o = plot.pointOffset({ x: 2, y: raidsupport - 5});
-    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + raidsupportlbl + '</div>');
-
-    o = plot.pointOffset({ x: 2, y: coreraider + 10});
-    canvas_attendance.append('<div style="position:absolute;left:' + (o.left + 4) + 'px;top:' + o.top + 'px;color:#666;font-size:smaller">' + coreraiderlbl + ' </div>');
-    
-    var choiceContainer = $("#choices");
-
-
     
     
 });
 </script>
-</div>
 
 <span class="corners-bottom"><span></span></span>
 </div>

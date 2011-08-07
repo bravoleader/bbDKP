@@ -438,6 +438,8 @@ $rc90 = get_overallraidcount($query_by_pool, (int) $config['bbdkp_list_p3'], $ti
 $rc60 = get_overallraidcount($query_by_pool, (int) $config['bbdkp_list_p2'], $time, $dkp_id);
 $rc30 = get_overallraidcount($query_by_pool, (int) $config['bbdkp_list_p1'], $time, $dkp_id);
 
+
+/** attendance SQL */
 $sql = "SELECT
 	c.game_id, c.colorcode,  c.imagename, 
 	e.event_dkpid,
@@ -615,9 +617,10 @@ ORDER BY
 	sum(CASE e.days WHEN '90' THEN e.attendance END ) desc,
 	e.member_id
 ";
-
-$result = $db->sql_query($sql);
-
+$startatt = request_var ( 'start', 0 );
+$result = $db->sql_query_limit ( $sql, 20, $startatt );
+$attpagination = generate_pagination ( $u_stats . '&amp;o=' . $current_order ['uri'] ['current'] , $total_members, 15, $startatt, true );
+	
 $attendance=0;
 while ( $row = $db->sql_fetchrow($result) )
 {
@@ -668,6 +671,7 @@ if($attendance > 0)
 
 /* send information to template */
 $template->assign_vars(array(
+	'ATTPAGINATION' 	=> $attpagination ,
 	'S_DISPLAY_STATS'		=> true,
 	'F_STATS' => $u_stats,
 	'U_STATS' => append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=stats'),
