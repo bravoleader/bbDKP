@@ -182,17 +182,21 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
 	white-space: nowrap;
 }
 
+
+/**** portal tooltip css ****/
+/* http://www.webmonkey.com/2010/02/make_css_rounded_corners  */
+
 .bbtooltip {
-	display: none;
+	 display: none;
 	 position:relative;
 	 margin:0px auto;
+	 font-size: 10px;
 	 min-width:200px;
 	 max-width:200px; 
 	 color:#FFFFDD;
 	 z-index:1;
-	 margin-left:10px; /* default, width of left corner */
+	 margin-left:12px; /* default, width of left corner */
 	 margin-bottom:0.5em; /* spacing under dialog */	
-	font-size: 11px;
 }
 
 .bbtooltip .bbinner,
@@ -209,7 +213,7 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
  position:relative;
  zoom:1;
   _overflow-y:hidden;
- padding:0px 10px 0px 0px;
+ padding:0px 12px 0px 0px;
 }
 
 .bbtooltip .t {
@@ -217,8 +221,8 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
  position:absolute;
  left:0px;
  top:0px;
- width:10px; /* top slice width */
- margin-left:-10px;
+ width:12px; /* top slice width */
+ margin-left:-12px;
  height:100%;
  background-position:top left;
 }
@@ -242,8 +246,8 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
 /* bottom corner width */
 .bbtooltip .b div {
  position:absolute;
- width:10px; 
- margin-left:-10px;
+ width:12px; 
+ margin-left:-12px;
  background-position:bottom left;
 }
 
