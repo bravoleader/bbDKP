@@ -187,16 +187,16 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
 /* http://www.webmonkey.com/2010/02/make_css_rounded_corners  */
 
 .bbtooltip {
-	 display: none;
-	 position:relative;
-	 margin:0px auto;
-	 font-size: 10px;
-	 min-width:200px;
-	 max-width:200px; 
-	 color:#FFFFDD;
-	 z-index:1;
-	 margin-left:12px; /* default, width of left corner */
-	 margin-bottom:0.5em; /* spacing under dialog */	
+	display: none;
+	position:relative;
+	margin:0px auto;
+	font-size: 10px;
+	min-width:200px;
+	max-width:400px; 
+	color:#FFFFDD;
+	z-index:1;
+	margin-left:12px; /* default, width of left corner */
+	margin-bottom:0.5em; /* spacing under dialog */	
 }
 
 .bbtooltip .bbinner,
@@ -207,6 +207,7 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
  background-color: transparent;
  background-repeat: no-repeat;
  background-position: right top;
+ 
 }
 	
 .bbtooltip .bbinner {
@@ -274,7 +275,14 @@ a.bossprogress,a.bossprogress:link,a.bossprogress:visited,a.bossprogress:active 
  padding-bottom:0px;
 }
 
-
+.bbtooltip textarea {
+	width:200px !important;
+	min-width:200px !important;
+	max-width:200px !important;
+	height:100px !important;
+	min-height:100px !important;
+	max-height:100px !important;
+}
 /* bossprogress.php css */
 
 .progresspage dl { 
@@ -357,9 +365,10 @@ span.corners-inner-bottom span {
 }
 
 span.corners-inner-top, span.corners-inner-bottom { 
-	background-image: url('{T_THEME_PATH}/images/dkp/corners_inner_left.gif'); 
+	background-image: url('{T_THEME_PATH}/images/corners_left.png'); 
 }
 span.corners-inner-top span, span.corners-inner-bottom span { 
-	background-image: url('{T_THEME_PATH}/images/dkp/corners_inner_right.gif'); 
+	background-image: url('{T_THEME_PATH}/images/corners_right.png'); 
 }
+
 
