@@ -2,13 +2,17 @@
 ## BRANCH v124
 
 1.2.4 is the next bbDKP release.
+
 Status to-do : 
 - ucp create new member
+- EVE Support
+
+
 Status Done : 
-•[DEL] Subsilver2 removed from package.
-•[NEW] jquery plot library in Statistics page, replaces pstat
-•[CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary
-•[UPD] jquery updated to 1.6.2
+1. [DEL] Subsilver2 removed from package.
+2. [NEW] jquery plot library in Statistics page, replaces pstat
+3. [CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary
+4. [UPD] jquery updated to 1.6.2
 
 
 ## ABOUT
