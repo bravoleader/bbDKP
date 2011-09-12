@@ -1,4 +1,15 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
+## BRANCH v124
+
+1.2.4 is the next bbDKP release.
+Status to-do : 
+- ucp create new member
+Status Done : 
+•[DEL] Subsilver2 removed from package.
+•[NEW] jquery plot library in Statistics page, replaces pstat
+•[CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary
+•[UPD] jquery updated to 1.6.2
+
 
 ## ABOUT
 
