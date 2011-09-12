@@ -2,7 +2,19 @@
 
 ## ABOUT
 
-bbDKP is a Dragon Kill system Mod for your phpBB3 Bulletin board.   It helps guilds in MMORPGs (Massive(ly) Multiplayer Online Role-playing Games) track guild members attendance, item purchases and other statistics. It integrates these Game, Guild and DKP management facilites into your phpBB Forum. This means your users gain single sign on to dkp and phpBB, and you as an administrator or raidleader gain a clean interface, robust admin facilities and less integration headaches. The framework supports multiple games : World of Warcraft, The Lord of the Rings Online, Dark Age of Camelot, Vanguard - Saga of Heroes, EverQuest I/II,  Warhammer Online, Final Fantasy XI, AION. 
+bbDKP is a Dragon Kill Points Mod for your phpBB3 Bulletin board.
+
+Dragon kill points are a form of currency in guilds, where members bid on game loot and buy the items, paying in DKP. 
+
+Different forms of DKP exist and bbDKP supports four point systems : Standard DKP, Time based DKP, Zero sum and EPGP. they can be combined with each other, except zero sum can't be combined with EPGP. 
+
+bbDKP has Game, Guild and DKP management functions built into your phpBB3 Forum. 
+
+This way, your users gain single sign on to dkp and phpBB3, and you as an administrator or raidleader get a clean interface, robust admin facilities and less integration headaches.
+
+Feature list : Portal with widgets, Dashboard, Statistics, Events, Raids, Member, Items, Roster, Bossprogress page, ACP and UCP modules. multiple games can be installed : World of Warcraft, The Lord of the Rings Online, Dark Age of Camelot, Vanguard - Saga of Heroes, EverQuest I/II, Warhammer Online, Final Fantasy XI, AION, Rift, and Star Wars-ToR
+
+There are a number of plugins, like Raidtracker, bbTips, Memberimport, Apply, Raidplanner (under development).
 
 ## COMMUNITY
 
