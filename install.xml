@@ -258,18 +258,17 @@ if(@defined("EMED_BBDKP"))
 				<comment lang="en"><![CDATA[Adding bbdkp credits link in overall_footer ]]></comment>
 				<comment lang="fr"><![CDATA[Ajout lien les crédits dans overall_footer ]]></comment>
 				<comment lang="de"><![CDATA[Zufügung Credits link in overall_footer ]]></comment>			
-				<find><![CDATA[2000, 2002, 2005, 2007 phpBB Group]]></find>
-				<action type="after-add"><![CDATA[<br />
-<script type="text/javascript">
+				<find><![CDATA[		<!-- IF TRANSLATION_INFO --><br />{TRANSLATION_INFO}<!-- ENDIF -->]]></find>
+				<action type="replace-with"><![CDATA[<script type="text/javascript">
 function pop_search()
 {
-    search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70')
+    search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70');
     search.focus();
 }
 </script>
-<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">BBdkp Credits</a>
-<br />]]></action>
-			</edit>
+<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">powered by bbDKP</a><br />
+		<!-- IF TRANSLATION_INFO --><br />{TRANSLATION_INFO}<!-- ENDIF -->]]></action>
+</edit>
 		</open>
 		<open src="/styles/prosilver/theme/stylesheet.css">
 			<edit>
