@@ -85,7 +85,7 @@ As of the current release, it does not (yet) make coffee ;)</p>
 		
 		<div class="content">
 			<ol>
-			<li>phpbb3.0.5 or higher</li>
+			<li>phpbb3.0.9</li>
 			<li>If you use Mysql then version 5 is required because group functions are used in the order by statement in standings.php</li>			
 			<li>PHP 5.2 -> 5.3.x / Libxml 2.6.0 (simplexml usage)</li>
 			<li>Curl (preferred) or url_fopen or fsockopen should be available on your server.</li>
@@ -93,11 +93,8 @@ As of the current release, it does not (yet) make coffee ;)</p>
 			</ol>
 			
 		</div>
-		
-		
 		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
 		<div class="inner"><span class="corners-bottom"><span></span></span></div>
-		
 	</div>	
 
 
@@ -172,7 +169,7 @@ As of the current release, it does not (yet) make coffee ;)</p>
 				<li>copy the new files to your webserver, replacing any old files. </li>
 				<li>apply the (few) changes to the core phpbb files. use a good text editor, like Notepad++  (PC) or Textwrangler (Mac).</li>
 				<li>launch the DB updater (/install/index.php)</li>
-				<li>Now you see the Umil updater. <u>Note there are NO database changes between 1.2.3 and 1.2.4.</u>
+				<li>Now you see the Umil updater. <u>Note there are NO database changes between 1.2.3 and 1.2.4. (except the version in the table phpbb_config.bbdkp_version)</u>
 				<ul>
 					<li>Enter your guildname</li>
 					<li>Choose the realm of your guild</li>
@@ -180,7 +177,6 @@ As of the current release, it does not (yet) make coffee ;)</p>
 					<li>Click submit. This will update to 1.2.4 and clear the caches (template, theme, imagesets)</li>
 				</ul>
 			</ol>
-			
 			
 			<h2>Quick Deactivation</h2>
 			<ol>
@@ -225,17 +221,17 @@ As of the current release, it does not (yet) make coffee ;)</p>
 		<div class="inner"><span class="corners-top"><span></span></span></div>
 		
 		<div class="content">
-1.2.4 xx-09-2011<br />
+
+1.2.4 18-09-2011<br />
 <br />
 <ul>
-<li>[NEW] add new member from UCP (calls ACP class) </li>
 <li>[DEL] Subsilver2 removed from package.</li>
 <li>[NEW] jquery plot library in Statistics page, replaces pstat</li>
 <li>[CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary</li>
-<li>[UPD] jquery updated to 1.6.2</li>
+<li>[NEW] default event icon added, wow event icons reduced to 64px (other event icons available as separate download)</li>
+<li>[UPD] jquery updated to 1.6.2, jquery tools updated to 1.2.6-dev. This should solve This is needed for Raidplanner. A final jqt version is not available yet</li>
 </ul>
 <br />
-
 
 1.2.3 09-06-2011<br />
 <br />
