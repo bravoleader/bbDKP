@@ -80,47 +80,48 @@ if (isset($config['bbdkp_default_game']))
 {
 	$gameinstall[$config['bbdkp_default_game']] = $choice = true;
 }
-elseif (isset($config['bbdkp_games_aion']))
+
+if (isset($config['bbdkp_games_aion']))
 {
 	$gameinstall['aion'] = $config['bbdkp_games_aion'];
 }
-elseif (isset($config['bbdkp_games_daoc']))
+if (isset($config['bbdkp_games_daoc']))
 {
 	$gameinstall['daoc'] =  $config['bbdkp_games_daoc'];
 }
-elseif (isset($config['bbdkp_games_eq']))
+if (isset($config['bbdkp_games_eq']))
 {
 	$gameinstall['eq'] =  $config['bbdkp_games_eq'];
 }
-elseif (isset($config['bbdkp_games_eq2']))
+if (isset($config['bbdkp_games_eq2']))
 {
 	$gameinstall['eq2'] = $config['bbdkp_games_eq2'];
 }
-elseif (isset($config['bbdkp_games_FFXI']))
+if (isset($config['bbdkp_games_FFXI']))
 {
 	$gameinstall['FFXI'] = $config['bbdkp_games_FFXI'];
 }
-elseif (isset($config['bbdkp_games_lotro']))
+if (isset($config['bbdkp_games_lotro']))
 {
 	$gameinstall['lotro'] = $config['bbdkp_games_lotro'];
 }
-elseif (isset($config['bbdkp_games_rift']))
+if (isset($config['bbdkp_games_rift']))
 {
 	$gameinstall['rift'] = $config['bbdkp_games_rift'];
 }
-elseif (isset($config['bbdkp_games_vanguard']))
+if (isset($config['bbdkp_games_vanguard']))
 {
 	$gameinstall['vanguard'] = $config['bbdkp_games_vanguard'];
 }
-elseif (isset($config['bbdkp_games_wow']))
+if (isset($config['bbdkp_games_wow']))
 {
 	$gameinstall['wow'] = $config['bbdkp_games_wow'];
 }
-elseif (isset($config['bbdkp_games_warhammer']))
+if (isset($config['bbdkp_games_warhammer']))
 {
 	$gameinstall['warhammer'] = $config['bbdkp_games_warhammer'];
 }
-elseif (isset($config['bbdkp_games_swtor']))
+if (isset($config['bbdkp_games_swtor']))
 {
 	$gameinstall['swtor'] = $config['bbdkp_games_swtor'];
 }
