@@ -10,9 +10,9 @@
 		<description lang="en"><![CDATA[Update script 1.2.3 to 1.2.4]]></description>
 		<description lang="fr"><![CDATA[mise à jour 1.2.3 vers 1.2.4]]></description>
 		<description lang="de"><![CDATA[Aktualisierung 1.2.3 bis 1.2.4]]></description>
-		<author-notes lang="en"><![CDATA[Requires bbdkp 1.2.4, Please read docs/INSTALL.html before beginning]]></author-notes>
-		<author-notes lang="fr"><![CDATA[Requiert bbdkp 1.2.4, Veuillez lire docs/INSTALL.html avant de commencer.]]></author-notes>
-		<author-notes lang="de"><![CDATA[benötigt bbdkp 1.2.4, Bitte lesen sie docs/INSTALL.html bevor.]]></author-notes>
+		<author-notes lang="en"><![CDATA[Requires bbdkp 1.2.3-PL4, Please read docs/INSTALL.html before beginning]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Requiert bbdkp 1.2.3-PL4, Veuillez lire docs/INSTALL.html avant de commencer.]]></author-notes>
+		<author-notes lang="de"><![CDATA[benötigt bbdkp 1.2.3-PL4, Bitte lesen sie docs/INSTALL.html bevor.]]></author-notes>
 		<author-group>
 			<author>
 				<realname><![CDATA[Andy Vandenberghe]]></realname>
@@ -86,38 +86,38 @@
 		</link-group>
 	</header>
 	<action-group>
+		<delete>
+			<!-- delete unneeded files -->
+			<file name="includes/bbdkp/pchart"/>
+			<file name="styles/prosilver/template/dkp/jquery-1.4.4.min.js"/>			
+		</delete>
 		<copy>
+			<!-- changed and new files only -->
+			<file from="root/adm/style/dkp/acp_mm_listmemberdkp.html" to="adm/style/dkp/acp_mm_listmemberdkp.html"/>
 			<file from="root/dkp.php" to="dkp.php"/>
-			<file from="root/portal.php" to="portal.php"/>
+			<file from="root/images/event_images/*.*" to="images/event_images/*.*"/>
+			<file from="root/includes/bbdkp/block/recruitmentblock.php" to="includes/bbdkp/block/recruitmentblock.php"/>
+			<file from="root/includes/bbdkp/module/news.php" to="includes/bbdkp/module/news.php"/>
+			<file from="root/includes/bbdkp/module/standings.php" to="includes/bbdkp/module/standings.php"/>
+			<file from="root/includes/bbdkp/module/stats.php" to="includes/bbdkp/module/stats.php"/>			
+			<file from="root/includes/ucp/ucp_dkp.php" to="includes/ucp/ucp_dkp.php"/>
 			<file from="root/install/*.*" to="install/*.*"/>
-			<file from="root/adm/findclassrace.php" to="adm/findclassrace.php"/>
-			<file from="root/adm/findfaction.php" to="adm/findfaction.php"/>
-			<file from="root/adm/mods/bbdkp_check_version.php" to="adm/mods/bbdkp_check_version.php"/>
-			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
-			<file from="root/images/pchart/*.*" to="images/pchart/*.*"/>
-			<file from="root/images/class_images/*.*" to="images/class_images/*.*"/>
-			<file from="root/images/race_images/*.*" to="images/race_images/*.*"/>
-			<file from="root/images/roster_classes/*.*" to="images/roster_classes/*.*"/>
-			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>
-			<file from="root/includes/bbdkp/bbdkpfunctions.php" to="includes/bbdkp/bbdkpfunctions.php"/>
-			<file from="root/includes/bbdkp/bbdkp.php" to="includes/bbdkp/bbdkp.php"/>
-			<file from="root/includes/bbdkp/block/*.*" to="includes/bbdkp/block/*.*"/>
-			<file from="root/includes/bbdkp/module/*.*" to="includes/bbdkp/module/*.*"/>
-			<file from="root/includes/bbdkp/pchart/*.*" to="includes/bbdkp/pchart/*.*"/>
-			<file from="root/includes/ucp/*.*" to="includes/ucp/*.*"/>
-			<file from="root/includes/ucp/info/*.*" to="includes/ucp/info/*.*"/>
-			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
-			<file from="root/styles/prosilver/theme/bbdkp.css" to="styles/prosilver/theme/bbdkp.css"/>
 			<file from="root/styles/prosilver/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
-			<file from="root/styles/prosilver/template/dkp/module/*.*" to="styles/prosilver/template/dkp/module/*.*"/>
-			<file from="root/styles/prosilver/template/dkp/block/*.*" to="styles/prosilver/template/dkp/block/*.*"/>
+			<file from="root/styles/prosilver/template/dkp/jquery-1.6.2.min.js" to="styles/prosilver/template/dkp/jquery-1.6.2.min.js"/>
+			<file from="root/styles/prosilver/template/dkp/jquery.tools.min.js" to="styles/prosilver/template/dkp/jquery.tools.min.js"/>
+			<file from="root/styles/prosilver/template/dkp/flot/*.*" to="styles/prosilver/template/dkp/flot/*.*"/>
+			<file from="root/styles/prosilver/template/dkp/ucp_dkp.html" to="styles/prosilver/template/dkp/ucp_dkp.html"/>			
+			<file from="root/styles/prosilver/template/dkp/module/listitems.html" to="styles/prosilver/template/dkp/module/listitems.html"/>
+			<file from="root/styles/prosilver/template/dkp/module/stats.html" to="styles/prosilver/template/dkp/module/stats.html"/>			
+			<file from="root/styles/prosilver/template/dkp/ucp_dkp.html" to="styles/prosilver/template/dkp/ucp_dkp.html"/>			
+			<file from="root/styles/prosilver/theme/bbdkp.css" to="styles/prosilver/theme/bbdkp.css"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
 		<open src="styles/prosilver/template/overall_header.html">
 			<edit>
-				<comment lang="en"><![CDATA[remove header edit]]></comment>
-				<comment lang="fr"><![CDATA[suppression edition entête]]></comment>
-				<comment lang="de"><![CDATA[Löschung overall_header link]]></comment>
+				<comment lang="en"><![CDATA[move header edit to dkpheader see http://bit.ly/ovx91i]]></comment>
+				<comment lang="fr"><![CDATA[suppression edition entête see http://bit.ly/ovx91i]]></comment>
+				<comment lang="de"><![CDATA[Löschung overall_header link see http://bit.ly/ovx91i]]></comment>
 				<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
 			</edit>
 		</open>
