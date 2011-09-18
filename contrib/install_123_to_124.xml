@@ -102,8 +102,6 @@
 			<file from="root/includes/bbdkp/module/stats.php" to="includes/bbdkp/module/stats.php"/>			
 			<file from="root/includes/ucp/ucp_dkp.php" to="includes/ucp/ucp_dkp.php"/>
 			<file from="root/install/*.*" to="install/*.*"/>
-			<file from="root/styles/prosilver/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
-			<file from="root/styles/prosilver/template/dkp/dkpheader.html" to="styles/prosilver/template/dkp/dkpheader.html"/>
 			<file from="root/styles/prosilver/template/dkp/jquery-1.6.2.min.js" to="styles/prosilver/template/dkp/jquery-1.6.2.min.js"/>
 			<file from="root/styles/prosilver/template/dkp/jquery.tools.min.js" to="styles/prosilver/template/dkp/jquery.tools.min.js"/>
 			<file from="root/styles/prosilver/template/dkp/flot/*.*" to="styles/prosilver/template/dkp/flot/*.*"/>
@@ -122,6 +120,25 @@
 				<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
 			</edit>
 		</open>
+		<open src="styles/prosilver/template/dkp/dkpmain.html">
+			<edit>
+				<comment lang="en"><![CDATA[move header edit to dkpheader see http://bit.ly/ovx91i]]></comment>
+				<comment lang="fr"><![CDATA[suppression edition entête see http://bit.ly/ovx91i]]></comment>
+				<comment lang="de"><![CDATA[Löschung overall_header link see http://bit.ly/ovx91i]]></comment>
+				<find><![CDATA[<!-- INCLUDE overall_header.html -->]]></find>
+				<action type="after-add"><![CDATA[
+<!-- INCLUDE dkp/dkpheader.html -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/dkp/dkpheader.html">
+			<edit>
+				<comment lang="en"><![CDATA[update jquery]]></comment>
+				<comment lang="fr"><![CDATA[update jquery]]></comment>
+				<comment lang="de"><![CDATA[update jquery]]></comment>
+				<find><![CDATA[src="{T_TEMPLATE_PATH}/dkp/jquery-1.4.4.min.js"></script>]]></find>
+				<action type="replace-with"><![CDATA[src="{T_TEMPLATE_PATH}/dkp/jquery-1.6.2.min.js"></script>]]></action>
+			</edit>
+		</open>
 		<open src="styles/prosilver/template/overall_footer.html">
 			<edit>
 			<find><![CDATA[search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70')]]></find>
@@ -135,8 +152,6 @@
 				 </inline-edit>
 			</edit>			
 		</open>
-		
-		
 		<php-installer><![CDATA[install/index.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Please see the full installation and upgrade instructions here : /docs/install.html
 What has changed ? see here : /docs/changelog.html
