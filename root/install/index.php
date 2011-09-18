@@ -831,7 +831,7 @@ include($phpbb_root_path . 'umil/umil_auto.' . $phpEx);
  */
 function gameinstall($action, $version)
 {
-	global $db, $table_prefix, $umil, $user, $phpbb_root_path, $phpEx; 
+	global $db, $table_prefix, $umil, $user, $config, $phpbb_root_path, $phpEx; 
 	switch ($action)
 	{
 		
@@ -896,10 +896,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'aion' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'aion' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'aion' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'aion' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'aion' where game_id  ='' ";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'aion' where game_id  =''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'aion' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'aion' where game_id  = ''";
+							$db->sql_query($sql);
 						}
 					}
 					else
@@ -921,10 +925,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'daoc' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'daoc' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'daoc' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'daoc' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'daoc' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'daoc' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'daoc' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'daoc' where game_id  = ''";
+							$db->sql_query($sql);
 						}
 						
 					}
@@ -949,10 +957,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'eq' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'eq' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'eq' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'eq' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'eq' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'eq' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'eq' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'eq' where game_id  = ''";
+							$db->sql_query($sql);
 						}
 					}
 					else
@@ -974,10 +986,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'eq2' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'eq2' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'eq2' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'eq2' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'eq2' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'eq2' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'eq2' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'eq2' where game_id  = ''";
+							$db->sql_query($sql);
 						}						
 					}
 					else
@@ -999,10 +1015,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'FFXI' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'FFXI' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'FFXI' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'FFXI' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'FFXI' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'FFXI' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'FFXI' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'FFXI' where game_id  = ''";
+							$db->sql_query($sql);
 						}									
 					}
 					else
@@ -1024,10 +1044,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'lotro' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'lotro' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'lotro' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'lotro' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'lotro' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'lotro' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'lotro' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'lotro' where game_id  = ''";
+							$db->sql_query($sql);
 						}								
 					}
 					else
@@ -1038,14 +1062,6 @@ function gameinstall($action, $version)
 					$installed_games[] = 'lotro';					
 				}
 
-				if(request_var('rift', 0) == 1)
-				{
-					// new game
-					install_rift($action, $version); 
-					$umil->config_update('bbdkp_games_rift', 1, true);
-					$installed_games[] = 'rift';
-				}
-				
 				if(request_var('vanguard', 0) == 1)
 				{
 					if (isset($config['bbdkp_default_game'])) 
@@ -1057,10 +1073,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'vanguard' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'vanguard' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'vanguard' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'vanguard' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'vanguard' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'vanguard' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'vanguard' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'vanguard' where game_id  = ''";
+							$db->sql_query($sql);
 						}							
 					}
 					else
@@ -1082,10 +1102,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'warhammer' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'warhammer' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'warhammer' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'warhammer' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'warhammer' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'warhammer' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'warhammer' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'warhammer' where game_id  = ''";
+							$db->sql_query($sql);
 						}								
 					}
 					else
@@ -1108,10 +1132,14 @@ function gameinstall($action, $version)
 						else 
 						{
 							// update existing static tables
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'wow' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'wow' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'wow' where game_id is null";
-							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'wow' where game_id is null";
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_classes' . " set game_id = 'wow' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_races' . " set game_id = 'wow' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_factions' . " set game_id = 'wow' where game_id  = ''";
+							$db->sql_query($sql);
+							$sql = "UPDATE " . $table_prefix . 'bbdkp_language' . " set game_id = 'wow' where game_id  = ''";
+							$db->sql_query($sql);
 						}								
 					}
 					else
@@ -1120,6 +1148,14 @@ function gameinstall($action, $version)
 					}
 					$umil->config_update('bbdkp_games_wow', 1, true);
 					$installed_games[] = 'wow';
+				}
+				
+				if(request_var('rift', 0) == 1)
+				{
+					// new game
+					install_rift($action, $version); 
+					$umil->config_update('bbdkp_games_rift', 1, true);
+					$installed_games[] = 'rift';
 				}
 				
 				if(request_var('swtor', 0) == 1)
@@ -1209,7 +1245,6 @@ function tableupdates123($action, $version)
 				switch ($version)
 				{
 					case '1.2.3':
-				    $umil->table_remove($table_prefix . 'bbdkp_news');
 			    
 					// remove old unique index on class table
 					$sql = "ALTER TABLE " . $table_prefix . 'bbdkp_classes' . " DROP INDEX class_id";
