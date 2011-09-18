@@ -103,6 +103,7 @@
 			<file from="root/includes/ucp/ucp_dkp.php" to="includes/ucp/ucp_dkp.php"/>
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/styles/prosilver/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
+			<file from="root/styles/prosilver/template/dkp/dkpheader.html" to="styles/prosilver/template/dkp/dkpheader.html"/>
 			<file from="root/styles/prosilver/template/dkp/jquery-1.6.2.min.js" to="styles/prosilver/template/dkp/jquery-1.6.2.min.js"/>
 			<file from="root/styles/prosilver/template/dkp/jquery.tools.min.js" to="styles/prosilver/template/dkp/jquery.tools.min.js"/>
 			<file from="root/styles/prosilver/template/dkp/flot/*.*" to="styles/prosilver/template/dkp/flot/*.*"/>

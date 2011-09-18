@@ -144,6 +144,7 @@
 			<file from="root/portal.php" to="portal.php"/>
 			<file from="root/install/*.*" to="install/*.*"/>
 			<file from="root/language/en/mods/*.*" to="language/en/mods/*.*"/>
+			<file from="root/styles/prosilver/template/dkp/dkpheader.html" to="styles/prosilver/template/dkp/dkpheader.html"/>			
 			<file from="root/styles/prosilver/template/dkp/dkpmain.html" to="styles/prosilver/template/dkp/dkpmain.html"/>
 			<file from="root/styles/prosilver/template/dkp/jquery-1.6.2.min.js" to="styles/prosilver/template/dkp/jquery-1.6.2.min.js"/>
 			<file from="root/styles/prosilver/template/dkp/jquery.tools.min.js" to="styles/prosilver/template/dkp/jquery.tools.min.js"/>
