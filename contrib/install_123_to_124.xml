@@ -148,7 +148,7 @@
 				<find><![CDATA[<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">BBdkp Credits</a>]]></find>			
 				 <inline-edit>
 				 	<inline-find><![CDATA[BBdkp Credits]]></inline-find>
-					<inline-action type="replace"><![CDATA[powered by bbDKP]]></inline-action>
+					<inline-action type="replace-with"><![CDATA[powered by bbDKP]]></inline-action>
 				 </inline-edit>
 			</edit>			
 		</open>
