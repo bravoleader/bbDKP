@@ -120,8 +120,15 @@
 </table>
 	<input type="hidden" NAME="dkpsys" VALUE="{DKPSYS}" />
 <fieldset class="quick" style="float: {S_CONTENT_FLOW_BEGIN};">
-	<input type="submit" name="submit_activate" value="{L_CHANGE_ACTIVATION}" class="button1" />
 </fieldset>
+
+<fieldset class="quick" style="float: {S_CONTENT_FLOW_BEGIN};">
+    {S_FORM_TOKEN}
+	<input type="submit" name="submit_activate" value="{L_CHANGE_ACTIVATION}" class="button1" />
+	<span class="small"><a href="#" onclick="marklist('acp_dkp_memberlist', 'activate_id', true); return false;">{L_MARK_ALL}</a> &bull; <a href="#" onclick="marklist('acp_dkp_memberlist', 'activate_id', false); return false;">{L_UNMARK_ALL}</a></span>
+	<br /><br />
+</fieldset>
+
 <br />
 
 

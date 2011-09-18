@@ -19,7 +19,6 @@ if ( !defined('IN_PHPBB') OR !defined('IN_BBDKP') )
 
 $user->add_lang(array('posting'));
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-include($phpbb_root_path.'includes/functions_content.' . $phpEx);
 
 $mode = request_var('mode', '');
 $submit = (isset ( $_POST ['post'] )) ? true : false;

@@ -155,14 +155,29 @@
 		</copy>
 		<open src="includes/functions.php">
 			<edit>
-				<comment lang="en"><![CDATA[updating links]]></comment>
-				<comment lang="en"><![CDATA[mise a jour liens]]></comment>
-				<comment lang="en"><![CDATA[Links]]></comment>
-				<find><![CDATA[		'U_DKP'			=> append_sid("{$phpbb_root_path}listmembers.$phpEx"),]]></find>
-				<inline-edit>
-					<inline-find><![CDATA[listmembers.$phpEx"]]></inline-find>
-					<inline-action type="replace-with"><![CDATA[dkp.$phpEx", 'page=standings']]></inline-action>
-				</inline-edit>
+				<comment lang="en"><![CDATA[updating links. we're removing most links because they are now defined in dkp.php]]></comment>
+				<comment lang="fr"><![CDATA[supprimer liens dans functions.php, ils se trouvent mtn dans dkp.php]]></comment>
+				<comment lang="de"><![CDATA[entferne links in functions.php, jetzt in dkp.php]]></comment>
+				<find><![CDATA[		'U_PORTAL'		=> append_sid("{$phpbb_root_path}portal.$phpEx"),
+		'U_DKP'			=> append_sid("{$phpbb_root_path}listmembers.$phpEx"),
+		'L_DKPPAGE'		=> $user->lang['DKP'],
+		'U_DKP_ACP'		=> ($auth->acl_get('a_') && !empty($user->data['is_registered'])) ? append_sid("{$phpbb_root_path}adm/index.$phpEx", 'i=' . (isset($config['bbdkp_module_id']) ? $config['bbdkp_module_id'] : 194) ,true,$user->session_id ) :'',  
+		'U_LISTITEMS'     => append_sid("{$phpbb_root_path}listitems.$phpEx"),  
+		'U_LISTITEMHIST'  => append_sid("{$phpbb_root_path}listitems.$phpEx?&amp;page=history"),
+		'U_LISTMEMBERS'   => append_sid("{$phpbb_root_path}listmembers.$phpEx"),
+		'U_LISTEVENTS'    => append_sid("{$phpbb_root_path}listevents.$phpEx"),
+		'U_LISTRAIDS'     => append_sid("{$phpbb_root_path}listraids.$phpEx"),
+		'U_VIEWITEM'      => append_sid("{$phpbb_root_path}viewitem.$phpEx"),
+		'U_BP'            => append_sid("{$phpbb_root_path}bossprogress.$phpEx"),
+		'U_ROSTER'        => append_sid("{$phpbb_root_path}roster.$phpEx"),
+		'U_ABOUT'         => append_sid("{$phpbb_root_path}aboutbbdkp.$phpEx"),
+		'U_STATS'         => append_sid("{$phpbb_root_path}stats.$phpEx"),
+		'U_VIEWNEWS'      => append_sid("{$phpbb_root_path}viewnews.$phpEx"),]]></find>
+			<action type="replace-with"><![CDATA[		'U_PORTAL'		=> append_sid("{$phpbb_root_path}portal.$phpEx"),
+		'U_DKP'			=> append_sid("{$phpbb_root_path}dkp.$phpEx", 'page=standings'),
+		'L_DKPPAGE'		=> $user->lang['DKP'],
+		'U_ABOUT'         => append_sid("{$phpbb_root_path}aboutbbdkp.$phpEx"),
+			]]></action>
 			</edit>
 		</open>
 		<open src="styles/prosilver/template/overall_header.html">
