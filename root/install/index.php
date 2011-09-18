@@ -809,7 +809,7 @@ $versions = array(
 		),
 		
 		'1.2.4' => array(
-			// no changes only bugfixes
+			// no changes except in php/html/js 
 		)
 		,
 		
