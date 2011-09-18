@@ -810,7 +810,7 @@ $versions = array(
 		),
 		
 		'1.2.4' => array(
-			// no changes except in php/html/js 
+			// no db changes except in php/html/js 
 		)
 		,
 		

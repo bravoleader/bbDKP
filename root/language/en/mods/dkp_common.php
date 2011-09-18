@@ -175,11 +175,11 @@ $lang = array_merge($lang, array(
 'ATTENDANCE_BY_EVENT' => 'Attendance by Event',
 'ATTENDED' => 'Attended',
 'ATTENDEES' => 'Attendees',
+'ATTENDANCE' => 'Attendance', 
 'AVERAGE' => 'Average',
 'BOSS' => 'Boss',
 'BUYER' => 'Buyer',
 'BUYERS' => 'Buyers',
-
 'ARMOR' => 'Armor',
 'TYPE' => 'Armor',
 
@@ -242,6 +242,7 @@ $lang = array_merge($lang, array(
 'MANAGE' => 'Manage',
 'MEMBER' => 'Member',
 'MEMBERS' => 'Members',
+'NO_DATA' => 'No Data', 	
 'RAID_ON' => 'Raid on %s on %s',
 'MISCELLANEOUS' => 'Miscellaneous',
 'NEWEST' => 'Newest raid',

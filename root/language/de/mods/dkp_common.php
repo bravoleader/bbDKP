@@ -73,6 +73,7 @@ $lang = array_merge($lang, array(
 	'NEWS'	=> 'Nachrichten',
 	'COMMENT'	=> 'Kommentare',
 	'LIST_NEWS'	=> 'Nachrichtenliste',
+	'NO_DATA' => 'Keine Daten', 
 	'NO_NEWS'	=> 'Keine Nachrichten gefunden.',
 	'NEWS_PER_PAGE'	=> 'Nachrichten pro Seite',
 	'ERROR_INVALID_NEWS_PROVIDED'	=> 'Ungültige Nachricht.',
