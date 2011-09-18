@@ -1,19 +1,14 @@
 [![bbDKP](http://www.bbDKP.com/images/site_logo.png)](http://www.bbDKP.com)
-## BRANCH v124
+## BRANCH v125
 
-1.2.4 is the next bbDKP release.
+1.2.4 is the current bbDKP release.
 
-Status to-do : 
-- ucp create new member
-- EVE Support
-
-
-Status Done : 
-1. [DEL] Subsilver2 removed from package.
-2. [NEW] jquery plot library in Statistics page, replaces pstat
-3. [CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary
-4. [UPD] jquery updated to 1.6.2
-
+Changelog : 
+[DEL] Subsilver2 removed from package. We don't support Table based design anymore. 
+[NEW] jquery plot library in Statistics page, replaces pstat
+[CHG] dkpheader is now included in dkpmain.html so no overall_header edit necessary
+[NEW] default event icon added, wow event icons reduced to 64px (other event icons available as separate download)
+[UPD] jquery updated to 1.6.2, jquery tools updated to 1.2.6-dev. This should solve This is needed for Raidplanner. A final jqt version is not available yet
 
 ## ABOUT
 
