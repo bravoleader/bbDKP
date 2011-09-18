@@ -121,6 +121,19 @@
 				<remove><![CDATA[<!-- INCLUDE dkp/dkpheader.html -->]]></remove>
 			</edit>
 		</open>
+		<open src="styles/prosilver/template/overall_footer.html">
+			<edit>
+			<find><![CDATA[search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70')]]></find>
+			<action type="after-add"><![CDATA[;]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">BBdkp Credits</a>]]></find>			
+				<inline-find><![CDATA[BBdkp Credits]]></inline-find>
+				<inline-action type="replace"><![CDATA[powered by bbDKP]]></inline-action>
+			</edit>			
+		</open>
+		
+		
 		<php-installer><![CDATA[install/index.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Please see the full installation and upgrade instructions here : /docs/install.html
 What has changed ? see here : /docs/changelog.html
