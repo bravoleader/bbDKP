@@ -1,7 +1,7 @@
 <?php
 /**
- * bbdkp everquest install data
- * @package bbDkp-installer
+ * bbdkp everquest update data
+ * @package bbDkp-update
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -17,7 +17,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-function install_eq($bbdkp_table_prefix)
+function update_eq($bbdkp_table_prefix)
 {
     global  $db, $table_prefix, $umil, $user;
     $db->sql_query('TRUNCATE TABLE ' . $bbdkp_table_prefix . 'classes');
@@ -144,7 +144,7 @@ function install_eq($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_eq_bb2($bbdkp_table_prefix)
+function update_eq_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	

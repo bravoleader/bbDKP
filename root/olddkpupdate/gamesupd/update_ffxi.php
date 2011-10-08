@@ -1,7 +1,7 @@
 <?php
 /**
- * bbdkp FFXI install data
- * @package bbDkp-installer
+ * bbdkp FFXI update data
+ * @package bbDkp-update
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -18,7 +18,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-function install_ffxi($bbdkp_table_prefix)
+function update_ffxi($bbdkp_table_prefix)
 {
     global  $db, $table_prefix, $umil, $user;
     
@@ -125,7 +125,7 @@ function install_ffxi($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_ffxi_bb2($bbdkp_table_prefix)
+function update_ffxi_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	

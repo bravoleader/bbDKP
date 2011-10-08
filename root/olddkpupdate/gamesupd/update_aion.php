@@ -1,10 +1,10 @@
 <?php
 /**
- * bbdkp wow install data
+ * bbdkp aion update data
  * @package bbDkp-installer
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
- * @version $Id: install_aion.php 661 2009-09-08 22:16:06Z Sajaki9 &Malfate
+ * @version $Id: update_aion.php 661 2009-09-08 22:16:06Z Sajaki9 &Malfate
  * 
  */
 
@@ -17,7 +17,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-function install_aion($bbdkp_table_prefix)
+function update_aion($bbdkp_table_prefix)
 {
     global  $db, $table_prefix, $umil, $user;
     $db->sql_query('TRUNCATE TABLE ' . $bbdkp_table_prefix . 'classes');
@@ -119,7 +119,7 @@ function install_aion($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_aion_bb2($bbdkp_table_prefix)
+function update_aion_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	

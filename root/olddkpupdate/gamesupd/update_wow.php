@@ -2,7 +2,7 @@
 /**
  * bbdkp wow install data
  * @author Sajaki@betenoire
- * @package bbDkp-installer
+ * @package bbDkp-updater
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -22,9 +22,19 @@ if (! defined ( 'IN_PHPBB' ))
  *
  * @param string $bbdkp_table_prefix
  */
-function install_wow()
+function update_wow($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
+	
+	// dkp system bbeqdkp_dkpsystem 
+	// set to classic tbc wlk 
+	$db->sql_query ( 'TRUNCATE TABLE ' . $bbdkp_table_prefix . 'dkpsystem' );
+	$sql_ary = array ();
+	$sql_ary [] = array ('dkpsys_id' => '1', 'dkpsys_name' => 'Classic', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
+	$sql_ary [] = array ('dkpsys_id' => '2', 'dkpsys_name' => 'TBC', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
+	$sql_ary [] = array ('dkpsys_id' => '3', 'dkpsys_name' => 'WLK10', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'Y' );
+	$sql_ary [] = array ('dkpsys_id' => '4', 'dkpsys_name' => 'WLK25', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
+	$db->sql_multi_insert ( $bbdkp_table_prefix . 'dkpsystem', $sql_ary );
 	
 	$db->sql_query ( 'TRUNCATE TABLE ' . $bbdkp_table_prefix . 'classes' );
 	$sql_ary = array ();
@@ -620,22 +630,13 @@ function install_wow()
 	
 	}
 	
-	// dkp system bbeqdkp_dkpsystem 
-	// set to classic tbc wlk 
-	$db->sql_query ( 'TRUNCATE TABLE ' . $bbdkp_table_prefix . 'dkpsystem' );
-	$sql_ary = array ();
-	$sql_ary [] = array ('dkpsys_id' => '1', 'dkpsys_name' => 'Classic', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
-	$sql_ary [] = array ('dkpsys_id' => '2', 'dkpsys_name' => 'TBC', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
-	$sql_ary [] = array ('dkpsys_id' => '3', 'dkpsys_name' => 'WLK10', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'Y' );
-	$sql_ary [] = array ('dkpsys_id' => '4', 'dkpsys_name' => 'WLK25', 'dkpsys_status' => 'Y', 'dkpsys_addedby' => 'admin', 'dkpsys_default' => 'N' );
-	$db->sql_multi_insert ( $bbdkp_table_prefix . 'dkpsystem', $sql_ary );
 
 }
 
 /*
  * installation of new zone and boss names for wow patch 3.2, 
  */
-function install_wow2($bbdkp_table_prefix)
+function update_wow2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -724,7 +725,7 @@ function install_wow2($bbdkp_table_prefix)
 /*
  * installation of new zone and boss names for wow patch 3.2.2, Onyxia 
  */
-function install_wow3($bbdkp_table_prefix)
+function update_wow3($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -768,7 +769,7 @@ function install_wow3($bbdkp_table_prefix)
  * thanks to Bmagic
  * 
  */
-function install_wow4($bbdkp_table_prefix)
+function update_wow4($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -970,7 +971,7 @@ function upd110_classid($bbdkp_table_prefix)
  * 
   * 
  */
-function install_wow5($bbdkp_table_prefix)
+function update_wow5($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -1017,7 +1018,7 @@ function install_wow5($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_wow_bb2($bbdkp_table_prefix)
+function update_wow_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -2380,7 +2381,7 @@ function install_wow_bb2($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_wow_bb3()
+function update_wow_bb3()
 {
 	global $db, $table_prefix, $umil, $user;
 	

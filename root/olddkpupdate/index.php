@@ -19,17 +19,6 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup();
 
-// We only allow a founder install this MOD
-if ($user->data['user_type'] != USER_FOUNDER)
-{
-    if ($user->data['user_id'] == ANONYMOUS)
-    {
-        login_box('', 'LOGIN');
-    }
-
-    trigger_error('NOT_AUTHORISED', E_USER_WARNING);
-}
-
 if (!file_exists($phpbb_root_path . 'umil/umil_auto.' . $phpEx))
 {
     trigger_error('Please download the latest UMIL (Unified MOD Install Library) from: <a href="http://www.phpbb.com/mods/umil/">phpBB.com/mods/umil</a>', E_USER_ERROR);
@@ -41,7 +30,7 @@ if (!file_exists($phpbb_root_path . 'olddkpupdate/index.' . $phpEx))
 }
 
 // The name of the mod to be displayed during installation.
-$mod_name = 'bbDKP 1.2.2';
+$mod_name = 'bbDKP 1.2.2 updater from <= 1.1';
 
 /*
 * The name of the config variable which will hold the currently installed version
@@ -869,7 +858,6 @@ $versions = array(
 
 		'custom' => array( 
 			'gameupdate', 
-			'bbdkp_caches'
 			),
 			
 		 // removing class_name, race_name column
@@ -896,7 +884,6 @@ $versions = array(
 		'1.1.2.1'    => array(
 			'custom' => array( 
 				'gameupdate', 
-				'bbdkp_caches'
 			),
 		),
 		
@@ -915,7 +902,6 @@ $versions = array(
 				'tablerename', 
 				'tableupdates_12', 
 				'gameupdate', 
-				'bbdkp_caches'
 			),
 			
 			//parameters
@@ -1036,7 +1022,6 @@ $versions = array(
 		
 		'custom' => array( 
 				'gameupdate', 
-				'bbdkp_caches'
 			),	
 		
 	),
@@ -1046,7 +1031,7 @@ $versions = array(
 		// no db changes
 		'custom' => array( 
 				'gameupdate', 
-				'bbdkp_caches'
+				/*'bbdkp_caches'*/
 			),	
 	),
 		
@@ -1204,7 +1189,7 @@ function bbdkp_cleanupold($action, $version)
 							trigger_error('UMIL_109_ILLEGALVERSION', E_USER_WARNING); 
 							break;
 						case '1.0.9rc1':
-							include($phpbb_root_path .'install/update109rc1.' . $phpEx);
+							include($phpbb_root_path .'olddkpupdate/update109rc1.' . $phpEx);
 			    			bbdkp_109rc1_uninstall();
 			    			return array('command' => sprintf($user->lang['UMIL_OLD_UNINSTALL_SUCCESS'], $bbdkpold), 'result' => 'SUCCESS');
 							break;
@@ -1238,7 +1223,7 @@ function bbdkp_cleanupold($action, $version)
 					$bbdkpold = isset($row['config_value']) ? strtolower($row['config_value']) : '1.0.8';
 	
 					//include updater
-					include($phpbb_root_path .'install/update108.' . $phpEx);	
+					include($phpbb_root_path .'olddkpupdate/update108.' . $phpEx);	
 					bbdkp_old_uninstall($bbdkpold); 
 					return array('command' => sprintf($user->lang['UMIL_OLD_UNINSTALL_SUCCESS'], $bbdkpold), 'result' => 'SUCCESS');
 				}
@@ -1310,49 +1295,49 @@ function gameupdate($action, $version)
 					switch ($game)
 					{
 						case 'wow':
-							install_wow($bbdkp_table_prefix);
+							update_wow($bbdkp_table_prefix);
 							// update bossprogress for trial of champion
-							install_wow2($bbdkp_table_prefix);
+							update_wow2($bbdkp_table_prefix);
 							// update bossprogress onyxia
-							install_wow3($bbdkp_table_prefix);
+							update_wow3($bbdkp_table_prefix);
 							// update 3.3
-							install_wow4($bbdkp_table_prefix);
+							update_wow4($bbdkp_table_prefix);
 							// update the class id of members
 							upd110_classid($bbdkp_table_prefix);
 	
 							return array('command' => 'UMIL_INSERT_WOWDATA', 'result' => 'SUCCESS');
 							break;
 						case 'aion':
-							install_aion($bbdkp_table_prefix);
+							update_aion($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_AIONDATA', 'result' => 'SUCCESS');
 							break;
 						case 'daoc':
-							install_daoc($bbdkp_table_prefix);
+							update_daoc($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_DAOCDATA', 'result' => 'SUCCESS');
 							break;
 						case 'FFXI':
-							install_ffxi($bbdkp_table_prefix);
+							update_ffxi($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_FFXIDATA', 'result' => 'SUCCESS');
 							break;
 						case 'vanguard':
-							install_vanguard($bbdkp_table_prefix);
+							update_vanguard($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_VANGUARDDATA', 'result' => 'SUCCESS');
 							break;
 						case 'warhammer':
-							install_warhammer($bbdkp_table_prefix);
-							install_warhammer_rc2($bbdkp_table_prefix);
+							update_warhammer($bbdkp_table_prefix);
+							update_warhammer_rc2($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_WARDATA', 'result' => 'SUCCESS');
 							break;
 						case 'eq':
-							install_eq($bbdkp_table_prefix);
+							update_eq($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_EQDATA', 'result' => 'SUCCESS');
 							break;
 						case 'eq2':
-							install_eq2($bbdkp_table_prefix);
+							update_eq2($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_EQ2DATA', 'result' => 'SUCCESS');
 							break;
 						case 'lotro':
-							install_lotro($bbdkp_table_prefix);
+							update_lotro($bbdkp_table_prefix);
 							return array('command' => 'UMIL_INSERT_LOTRODATA', 'result' => 'SUCCESS');
 							break;
 						default :
@@ -1389,7 +1374,7 @@ function gameupdate($action, $version)
 		       				return array('command' => 'UMIL_INSERT_LOTRODATA', 'result' => 'SUCCESS');
 							break; 
 						case 'wow': 
-							install_wow5($bbdkp_table_prefix); 
+							update_wow5($bbdkp_table_prefix); 
 							return array('command' => 'UMIL_INSERT_WOWDATA', 'result' => 'SUCCESS');
 						default :
 						    break; 
@@ -1481,48 +1466,48 @@ function gameupdate($action, $version)
 							$sql = 'update ' . $bbdkp_table_prefix . "classes set colorcode = '#FF7C0A' where class_id = '11'" ;
 		       				$db->sql_query ($sql);
 							
-							install_wow_bb2($bbdkp_table_prefix);
+							update_wow_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  ); 
 		       				
 		       				return array('command' => 'UMIL_INSERT_WOWDATA', 'result' => 'SUCCESS');
 							break;
 						case 'aion':
-		       				install_aion_bb2($bbdkp_table_prefix);
+		       				update_aion_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_AIONDATA', 'result' => 'SUCCESS');
 							break;
 				    	case 'daoc':
-		       				install_daoc_bb2($bbdkp_table_prefix);
+		       				update_daoc_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_DAOCDATA', 'result' => 'SUCCESS');
 							break; 
 						case 'FFXI':
-		       				install_ffxi_bb2($bbdkp_table_prefix);
+		       				update_ffxi_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_FFXIDATA', 'result' => 'SUCCESS');
 							break; 
 						case 'vanguard':
-		       				install_vanguard_bb2($bbdkp_table_prefix);
+		       				update_vanguard_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_VANGUARDDATA', 'result' => 'SUCCESS');
 							break; 
 						case 'warhammer':
-		       				install_warhammer_bb2($bbdkp_table_prefix);
+		       				update_warhammer_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_WARDATA', 'result' => 'SUCCESS');
 							break; 
 						case 'eq':
-		       				install_eq_bb2($bbdkp_table_prefix);
+		       				update_eq_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_EQDATA', 'result' => 'SUCCESS');
 							break; 
 						case 'eq2':
-		       				install_eq2_bb2($bbdkp_table_prefix);
+		       				update_eq2_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_EQ2DATA', 'result' => 'SUCCESS');
 							break; 
 						case 'lotro':
-		       				install_lotro_bb2($bbdkp_table_prefix);
+		       				update_lotro_bb2($bbdkp_table_prefix);
 		       				$db->sql_query ( 'update ' . $bbdkp_table_prefix . 'bb_zonetable  set sequence = id '  );
 		       				return array('command' => 'UMIL_INSERT_LOTRODATA', 'result' => 'SUCCESS');
 							break; 
@@ -1556,10 +1541,10 @@ function gameupdate($action, $version)
 					switch ($game)
 					{
 						case 'wow':
-							install_wow_bb3();
+							update_wow_bb3();
 							break;
 						case 'eq2':
-							install_eq2_bb3();
+							update_eq2_bb3();
 							break;
 					}
 					

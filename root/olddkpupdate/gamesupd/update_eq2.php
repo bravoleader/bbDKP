@@ -1,7 +1,7 @@
 <?php
 /**
- * bbdkp wow install data
- * @package bbDkp-installer
+ * bbdkp wow update data
+ * @package bbDkp-update
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -16,7 +16,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-function install_eq2($bbdkp_table_prefix)
+function update_eq2($bbdkp_table_prefix)
 {
     global  $db, $table_prefix, $umil, $user;
 
@@ -561,7 +561,7 @@ function install_eq2($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_eq2_bb2($bbdkp_table_prefix)
+function update_eq2_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
@@ -1116,7 +1116,7 @@ function install_eq2_bb2($bbdkp_table_prefix)
  * release 1.2 -- updates for eq2
  * 
  */
-function install_eq2_bb3()
+function update_eq2_bb3()
 {
 	global $db, $table_prefix, $umil, $user;
 	

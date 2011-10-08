@@ -23,17 +23,6 @@ $user->session_begin();
 $auth->acl($user->data);
 $user->setup();
 
-// We only allow a founder install this MOD
-if ($user->data['user_type'] != USER_FOUNDER)
-{
-    if ($user->data['user_id'] == ANONYMOUS)
-    {
-        login_box('', 'LOGIN');
-    }
-
-    trigger_error('NOT_AUTHORISED', E_USER_WARNING);
-}
-
 if (!file_exists($phpbb_root_path . 'umil/umil_auto.' . $phpEx))
 {
     trigger_error('Please download the latest UMIL (Unified MOD Install Library) from: <a href="http://www.phpbb.com/mods/umil/">phpBB.com/mods/umil</a>', E_USER_ERROR);
@@ -906,21 +895,67 @@ function gameinstall($action, $version)
 function check_oldbbdkp()
 {
 	global $db, $table_prefix, $umil, $config, $phpbb_root_path, $phpEx;
-	
 	include($phpbb_root_path . 'umil/umil.' . $phpEx);
 	$umil=new umil;
-	
-	// check config		
-	if($umil->config_exists('bbdkp_version'))
-    {
-		if(version_compare($config['bbdkp_version'], '1.2.2') == -1 )
-		{
-			//stop here, the version is less than 1.2.2
-			redirect(append_sid($phpbb_root_path . '/olddkpupdate/index.'. $phpEx)); 
+	// check for oldstyle acp
+	if ($umil->module_exists('acp', false, 'DKP'))
+  		{
+  			//we have found an old dkp tab, now check for version
+  			if($umil->config_exists('bbdkp_version', true))
+			{
 			
-		}
-		
-    }   	
+				// insure against cleared config array 
+				$sql = 'select config_value from ' . CONFIG_TABLE . " WHERE config_name = 'bbdkp_version' ";
+				$result = $db->sql_query($sql);
+				$bbdkpold = $db->sql_fetchfield('config_value', 0, $result); 
+				$db->sql_freeresult($result);
+				switch ($bbdkpold)
+				{
+					case '1.0.9b4' :
+						trigger_error('UMIL_109_ILLEGALVERSION', E_USER_WARNING); 
+						break;
+					case '1.0.9rc1':
+						include($phpbb_root_path .'olddkpupdate/update109rc1.' . $phpEx);
+		    			redirect(append_sid($phpbb_root_path . '/olddkpupdate/index.'. $phpEx));
+		    			return array('command' => sprintf($user->lang['UMIL_OLD_UNINSTALL_SUCCESS'], $bbdkpold), 'result' => 'SUCCESS');
+						break;
+					default:
+						if(version_compare($bbdkpold, '1.2.2') == -1 )
+						{
+							redirect(append_sid($phpbb_root_path . '/olddkpupdate/index.'. $phpEx)); 
+						}
+						break;
+				}
+			}
+			else 
+			{
+				// legacy versions updater
+				// no config entry before 1.0.9rc1, so look in old config table
+				if(!defined('OLD_CONFIG_TABLE'))
+				{
+				    define('OLD_CONFIG_TABLE',  'bbeqdkp_config');
+				}
+	
+				//get game
+				$sql = 'SELECT config_value FROM ' . OLD_CONFIG_TABLE . " where config_name = 'bbdkp_default_game' " ;
+				$result = @$db->sql_query($sql);
+				$game = @$db->sql_fetchrow( $result );
+				$game = strtolower($game['config_value']);
+				
+				//get version
+				$sql = 'SELECT config_value FROM ' . OLD_CONFIG_TABLE . " where config_name = 'bbdkp_version' " ;
+				$result = @$db->sql_query($sql);
+				$row = @$db->sql_fetchrow( $result );
+				
+				//very early versions had no version number
+				$bbdkpold = isset($row['config_value']) ? strtolower($row['config_value']) : '1.0.8';
+	
+				//include updater
+				redirect(append_sid($phpbb_root_path . '/olddkpupdate/index.'. $phpEx));
+				return array('command' => sprintf($user->lang['UMIL_OLD_UNINSTALL_SUCCESS'], $bbdkpold), 'result' => 'SUCCESS');
+			}
+  			
+    }
 
 	
 }

@@ -1,7 +1,7 @@
 <?php
 /**
- * bbdkp LOTRO install data
- * @package bbDkp-installer
+ * bbdkp LOTRO update data
+ * @package bbDkp-update
  * @copyright (c) 2009 bbDkp <http://code.google.com/p/bbdkp/>
  * @license http://opensource.org/licenses/gpl-license.php GNU Public License
  * @version $Id$
@@ -17,7 +17,7 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
-function install_lotro($bbdkp_table_prefix)
+function update_lotro($bbdkp_table_prefix)
 {
     global  $db, $table_prefix, $umil, $user;
     
@@ -359,7 +359,7 @@ function install_lotro($bbdkp_table_prefix)
  * generated with the spreadsheet
  * 
  */
-function install_lotro_bb2($bbdkp_table_prefix)
+function update_lotro_bb2($bbdkp_table_prefix)
 {
 	global $db, $table_prefix, $umil, $user;
 	
