@@ -2004,7 +2004,7 @@ function tableupdates_12($action, $version)
 			// populate the event_id, we have to match raid_name to event_name oO !
 			$sql = "UPDATE " . $table_prefix ."bbdkp_raids r 
 					INNER JOIN temp_raids t ON r.raid_id = t.raid_id 
-					INNER JOIN " . $table_prefix ."bbdkp_events e ON r.raid_name =  e.event_name
+					INNER JOIN " . $table_prefix ."bbdkp_events e ON t.raid_name =  e.event_name
 					SET r.event_id = e.event_id" ;
 			$db->sql_query($sql);
 			
