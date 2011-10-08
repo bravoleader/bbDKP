@@ -760,7 +760,6 @@ function bbdkp_restore108($bbdkpold)
 	   $db->sql_freeresult($result);
 	   
 	   // insert raids
-	   
 	   $sql = "delete from temp_raids where raid_date < 0 ";
 	   $db->sql_query($sql);
 	   

@@ -1851,7 +1851,7 @@ function tableupdates_12($action, $version)
 
 			/**
 			 * adjustments table, new key
-			 */ 
+			 */
 			$umil->table_index_add($table_prefix . 'bbdkp_adjustments', 'member_id', array('member_id', 'adjustment_dkpid'));
 			
 			/**
@@ -2004,8 +2004,8 @@ function tableupdates_12($action, $version)
 			
 			// populate the event_id, we have to match raid_name to event_name oO !
 			$sql = "UPDATE " . $table_prefix ."bbdkp_raids r 
-					INNER JOIN " . $table_prefix ."bbdkp_events e
-					ON r.raid_name =  e.event_name
+					INNER JOIN " . $table_prefix ."temp_raids t ON r.raid_id = t.raid_id 
+					INNER JOIN " . $table_prefix ."bbdkp_events e ON r.raid_name =  e.event_name
 					SET r.event_id = e.event_id" ;
 			$db->sql_query($sql);
 			
@@ -2021,7 +2021,7 @@ function tableupdates_12($action, $version)
 	          		//make new event
 	          		 $query = $db->sql_build_array('INSERT', array(   
 	                'event_dkpid'   =>  $dkpid,   
-	                'event_name'    =>  'Unknown Event update 1.2',   
+	                'event_name'    =>  'Unknown Event (Correct manually)',   
 	                'event_color'	=>  '#FF77FF',  
 	                'event_value'   =>   0, 
 	                'event_added_by' =>  $user->data['username'], 
@@ -2061,4 +2061,4 @@ function tableupdates_12($action, $version)
 		
 }
 
-?>?>
+?>
