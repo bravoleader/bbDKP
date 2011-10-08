@@ -1137,7 +1137,6 @@ function regionoptions($selected_value, $key)
 	return $pass_char_options;
 }
 
-
 /**************************************
  *  
  * global function for clearing cache
@@ -2004,7 +2003,7 @@ function tableupdates_12($action, $version)
 			
 			// populate the event_id, we have to match raid_name to event_name oO !
 			$sql = "UPDATE " . $table_prefix ."bbdkp_raids r 
-					INNER JOIN " . $table_prefix ."temp_raids t ON r.raid_id = t.raid_id 
+					INNER JOIN temp_raids t ON r.raid_id = t.raid_id 
 					INNER JOIN " . $table_prefix ."bbdkp_events e ON r.raid_name =  e.event_name
 					SET r.event_id = e.event_id" ;
 			$db->sql_query($sql);
@@ -2051,8 +2050,6 @@ function tableupdates_12($action, $version)
             	array($table_prefix .'bbdkp_raids', 'raid_value' ),
             	array($table_prefix .'bbdkp_raids', 'raid_name' ), 
             ));
-
-            // end
             
 			break;
 	}
