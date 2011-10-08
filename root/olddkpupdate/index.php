@@ -1360,7 +1360,6 @@ function gameupdate($action, $version)
 		           return array(
 		          	 'command' => 'UMIL_LOGCLEANED', 
 		          	 'result' => 'SUCCESS');
-	
 					break;
 				
 				case '1.1.1' :
@@ -2062,4 +2061,4 @@ function tableupdates_12($action, $version)
 		
 }
 
-?>
+?>?>

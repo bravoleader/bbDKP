@@ -676,26 +676,26 @@ function bbdkp_old_uninstall($bbdkpold)
 	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_MAINPAGE'); 
 	}    
 	    
-    if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_MDKP'))
-	{
-	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_MDKP'); 
-	}    
-
-	    if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_NEWS'))
+	if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_NEWS'))
 	{
 	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_NEWS'); 
 	}    
-	
-	    if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_MEMBER'))
+
+	if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_MEMBER'))
 	{
 	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_MEMBER'); 
 	}    
 	
-	    if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_NEWS'))
+	if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_RAIDS'))
 	{
-	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_NEWS'); 
+	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_RAIDS'); 
 	}    
 	
+	if( $umil->module_exists('acp', $dkp8, 'ACP_DKP_MDKP'))
+	{
+	   $umil->module_remove('acp', $dkp8, 'ACP_DKP_MDKP'); 
+	}    
+
 	if( $umil->module_exists('acp', 0, 'ACP_CAT_DKP'))
 	{
 	   $umil->module_remove('acp', 0, 'ACP_CAT_DKP'); 
@@ -760,6 +760,10 @@ function bbdkp_restore108($bbdkpold)
 	   $db->sql_freeresult($result);
 	   
 	   // insert raids
+	   
+	   $sql = "delete from temp_raids where raid_date < 0 ";
+	   $db->sql_query($sql);
+	   
 	   $sql = "select * from temp_raids "; 
 	   if($result = $db->sql_query($sql))
 	   {
@@ -849,6 +853,9 @@ function bbdkp_restore108($bbdkpold)
 	   unset ($sql_ary);
 
 	   // insert dkp adjustments
+	   $sql = "delete from temp_adjustments where adjustment_date < 0 ";
+	   $db->sql_query($sql);
+	   
 	   $sql = "select * from temp_adjustments "; 
 	   if($result = $db->sql_query($sql))
 	   {

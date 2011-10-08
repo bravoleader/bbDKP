@@ -24,7 +24,7 @@ if (! defined ( 'IN_PHPBB' ))
  */
 function update_wow($bbdkp_table_prefix)
 {
-	global $db, $table_prefix, $umil, $user;
+	global $db, $umil;
 	
 	// dkp system bbeqdkp_dkpsystem 
 	// set to classic tbc wlk 
@@ -638,7 +638,7 @@ function update_wow($bbdkp_table_prefix)
  */
 function update_wow2($bbdkp_table_prefix)
 {
-	global $db, $table_prefix, $umil, $user;
+	global $db, $umil;
 	
 	if ($umil->table_exists ( $bbdkp_table_prefix . 'bb_config' ) and ($umil->table_exists ( $bbdkp_table_prefix . 'bb_offsets' )))
 	{
@@ -727,7 +727,7 @@ function update_wow2($bbdkp_table_prefix)
  */
 function update_wow3($bbdkp_table_prefix)
 {
-	global $db, $table_prefix, $umil, $user;
+	global $db, $umil;
 	
 	if ($umil->table_exists ( $bbdkp_table_prefix . 'bb_config' ) and ($umil->table_exists ( $bbdkp_table_prefix . 'bb_offsets' )))
 	{
@@ -771,7 +771,7 @@ function update_wow3($bbdkp_table_prefix)
  */
 function update_wow4($bbdkp_table_prefix)
 {
-	global $db, $table_prefix, $umil, $user;
+	global $db, $umil;
 	
 	if ($umil->table_exists ( $bbdkp_table_prefix . 'bb_config' ) and ($umil->table_exists ( $bbdkp_table_prefix . 'bb_offsets' )))
 	{
@@ -1020,7 +1020,7 @@ function update_wow5($bbdkp_table_prefix)
  */
 function update_wow_bb2($bbdkp_table_prefix)
 {
-	global $db, $table_prefix, $umil, $user;
+	global $db, $umil;
 	
 	if ($umil->table_exists ( $bbdkp_table_prefix . 'bb_zonetable' ) and ($umil->table_exists ( $bbdkp_table_prefix . 'bb_bosstable' )))
 	{

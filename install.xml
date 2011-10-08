@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
-<!-- bbdkp installer $id$ -->
 <!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
 <!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
 	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<meta name="generator" content="MODX file generated with PP MODX Creator 1.0.1 by tumba25 (offline version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
 		<title lang="en"><![CDATA[bbDKP]]></title>
@@ -32,7 +32,7 @@ bbDKP (c) 2009 Sajaki, Kapli, Hroar, Malfate
 bbDKP (c) 2008 Sajaki, Malfate, Kapli 
 bbDKP (c) 2007 Ippeh, Teksonic, Monkeytech, DWKN
 EQDkp (c) 2003 The EqDkp Project Team]]></description>
-<description lang="fr"><![CDATA[bbDKP est une système DKP pour votre forum PHPBB3, developpee depuis EQDKP. Il est multi-pool, supporte le systeme DKP Standard, points par temps passé, Somme Zéro et EPGP.  Il aide les guildes à gérer leur Guilde, à savoir le suivi de la participation des membres au raids, la gestion des achats d‘objets, et bien d’autres statistiques. Il met à jour et incorpore ces fonctions de gestion, et les intègre dans PHPBB3. Ceci apportera à vos utilisateurs un point d’accès centralisé à DKP ainsi qu’au forum, et vous comme Administrateur ou leader de Raid recoit une interface claire et robuste et pas de soucis d’integration. Nous supportons les Jeux Aion, Daoc, Eq, Eq2, ffxi, lotro, vanguard, warhammer et World of Warcraft. 
+		<description lang="fr"><![CDATA[bbDKP est une système DKP pour votre forum PHPBB3, developpee depuis EQDKP. Il est multi-pool, supporte le systeme DKP Standard, points par temps passé, Somme Zéro et EPGP.  Il aide les guildes à gérer leur Guilde, à savoir le suivi de la participation des membres au raids, la gestion des achats d‘objets, et bien d’autres statistiques. Il met à jour et incorpore ces fonctions de gestion, et les intègre dans PHPBB3. Ceci apportera à vos utilisateurs un point d’accès centralisé à DKP ainsi qu’au forum, et vous comme Administrateur ou leader de Raid recoit une interface claire et robuste et pas de soucis d’integration. Nous supportons les Jeux Aion, Daoc, Eq, Eq2, ffxi, lotro, vanguard, warhammer et World of Warcraft. 
 Liste non exhaustive des fonctionnalités : Multiples groupes DKP et guildes, Tribune des points DKP, Raids, Evènements, Valeurs des Objets, Historique des Objets, Statistique des Raids, Page d’avancée des Boss, Armurerie, module PCA avec Backup, Import de EQDKP+. 
 Les Plugins : Importation depuis l’armurerie de Blizzard et Aion, bbTips (Wow), Raidtracker (wow), Bossprogress, Formulaire de Recrutement, Planner (en developpement)
 Pour de plus amples détails, veuillez consulter le changelog. Demandes de développement, questions de support sont les bienvenues à http://www.bbdkp.com. 
@@ -51,7 +51,7 @@ bbDKP (c) 2009 Sajaki, Kapli, Hroar, Malfate
 bbDKP (c) 2008 Sajaki, Malfate, Kapli 
 bbDKP (c) 2007 Ippeh, Teksonic, Monkeytech, DWKN
 EQDkp (c) 2003 The EqDkp Project Team]]></description>
-<description lang="de"><![CDATA[bbDKP ist eine DKP Lösung für ihr PHPBB3 Forum, weiterentwickelt aus EQDKP. Est ein multi-pool DKP System, und bietet Standard DKP, Zeitpunkteverwaltung, Nullpunkteverwaltung, und EPGP. Es ermöglicht die Gildenmitgliederverwaltung, die Raidteilnahme in Raids, die Verwaltung der Gegenstandsankäufe, verwaltung von DKP Konten, und GildenStatistiken. Sie erreichen damit ein einziges Angriffspunkt zum DKP und zum forum, mit eine überschauliche interface ohne Integrationsschwierigkeiten. bbDKP unterstützt jetzt Aion, Daoc, Eq, Eq2, ffxi, lotro, vanguard, warhammer und World of Warcraft. 
+		<description lang="de"><![CDATA[bbDKP ist eine DKP Lösung für ihr PHPBB3 Forum, weiterentwickelt aus EQDKP. Est ein multi-pool DKP System, und bietet Standard DKP, Zeitpunkteverwaltung, Nullpunkteverwaltung, und EPGP. Es ermöglicht die Gildenmitgliederverwaltung, die Raidteilnahme in Raids, die Verwaltung der Gegenstandsankäufe, verwaltung von DKP Konten, und GildenStatistiken. Sie erreichen damit ein einziges Angriffspunkt zum DKP und zum forum, mit eine überschauliche interface ohne Integrationsschwierigkeiten. bbDKP unterstützt jetzt Aion, Daoc, Eq, Eq2, ffxi, lotro, vanguard, warhammer und World of Warcraft. 
 Nicht vollständige Funktionalitätenliste : Support für Vielfache DKP Gruppen (Pools), Vielfache Gilden, Ein Übersicht der DKP Punkte pro Spieler, Raidsliste, Ereignisliste, Gegenstandswerte, Historiken, Raidstatistiken, Gildenarsenalseite, ACP Modulen, Backupfunktionen, Import von EQDKP und EQDKP+. 
 Vorhandene Plugins : Importation von Mitglieder von das Blizzard oder Aion Arsenal, Bossvorgang, bbTips (tooltips), Raidtracker (wow), Rekrutierungsformular.  
 Für weitere Entwicklungsanfragen und Support heissen wir Sie wilkommen auf unsere internetseite http://www.bbdkp.com. 
@@ -70,16 +70,13 @@ bbDKP (c) 2009 Sajaki, Kapli, Hroar, Malfate
 bbDKP (c) 2008 Sajaki, Malfate, Kapli 
 bbDKP (c) 2007 Ippeh, Teksonic, Monkeytech, DWKN
 EQDkp (c) 2003 The EqDkp Project Team]]></description>
-<author-notes lang="en"><![CDATA[Requirements : phpBB3 v3.0.x, PHP 5.2 with Libxml 2.6.0 (simplexml usage), Curl 
-Please read docs\INSTALL.html before beginning ]]>
-</author-notes>
-<author-notes lang="fr"><![CDATA[Requis : phpBB3 v3.0.x, PHP 5.2 avec Libxml 2.6.0 (simplexml), Curl 
-Veuillez lire docs\INSTALL.html avant de commencer ]]>
-</author-notes>
-<author-notes lang="de"><![CDATA[Benötigt : phpBB3 v3.0.x, PHP 5.2 mit Libxml 2.6.0 (simplexml), Curl 
-Bitte lesen sie docs\INSTALL.html bevor. ]]>
-</author-notes>
-<author-group>
+		<author-notes lang="en"><![CDATA[Requirements : phpBB3 v3.0.x, PHP 5.2 with Libxml 2.6.0 (simplexml usage), Curl 
+Please read docs\INSTALL.html before beginning]]></author-notes>
+		<author-notes lang="fr"><![CDATA[Requis : phpBB3 v3.0.x, PHP 5.2 avec Libxml 2.6.0 (simplexml), Curl 
+Veuillez lire docs\INSTALL.html avant de commencer]]></author-notes>
+		<author-notes lang="de"><![CDATA[Benötigt : phpBB3 v3.0.x, PHP 5.2 mit Libxml 2.6.0 (simplexml), Curl 
+Bitte lesen sie docs\INSTALL.html bevor.]]></author-notes>
+		<author-group>
 			<author>
 				<realname><![CDATA[Andy Vandenberghe]]></realname>
 				<username><![CDATA[Sajaki]]></username>
@@ -115,7 +112,7 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 				<homepage><![CDATA[http://www.bbdkp.com]]></homepage>
 				<email><![CDATA[morten.boegeskov@gmail.com]]></email>
 				<contributions-group>
-					<contributions status="past" from="2009-05-01"  to="2009-09-04" position="Developer"/>
+					<contributions status="past" from="2009-05-01" to="2009-09-04" position="Developer"/>
 				</contributions-group>
 			</author>
 			<author>
@@ -167,28 +164,22 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 			<link type="template" href="contrib/subsilver2.xml" lang="en">subsilver2</link>
 			<link type="template" href="contrib/subsilver2.xml" lang="fr">subsilver2</link>
 			<link type="template" href="contrib/subsilver2.xml" lang="de">subsilver2</link>
-
-			<link type="language" lang="en" href="contrib/fr.xml">French</link>
-			<link type="language" lang="fr" href="contrib/fr.xml">Français</link>
-			<link type="language" lang="de" href="contrib/fr.xml">Franzözisch</link>
-
-			<link type="language" lang="en" href="contrib/de.xml">German</link>
-			<link type="language" lang="fr" href="contrib/de.xml">Allemand</link>
-			<link type="language" lang="de" href="contrib/de.xml">Deutsch</link>	
-			
-			<link type="contrib" lang="en" href="contrib/install_1122_to_122.xml">Update from v1.1.2.2 to v1.2.2</link>
-			<link type="contrib" lang="fr" href="contrib/install_1122_to_122.xml">Mise à jour de v1.1.2.2 à v1.2.2</link>
-			<link type="contrib" lang="de" href="contrib/install_1122_to_122.xml">Aktualisierung von v1.1.2.2 bis v1.2.2</link>
-
-			<link type="contrib" lang="en" href="contrib/install_12_to_122.xml">Update from v1.2 to v1.2.2</link>
-			<link type="contrib" lang="fr" href="contrib/install_12_to_122.xml">Mise à jour de v1.2 à v1.2.2</link>
-			<link type="contrib" lang="de" href="contrib/install_12_to_122.xml">Aktualisierung von v1.2 bis v1.2.2</link>
-			
-			<link type="contrib" lang="en" href="contrib/install_121_to_122.xml">Update from v1.2.1 to v1.2.2</link>
-			<link type="contrib" lang="fr" href="contrib/install_121_to_122.xml">Mise à jour de v1.2.1 à v1.2.2</link>
-			<link type="contrib" lang="de" href="contrib/install_121_to_122.xml">Aktualisierung von v1.2.1 bis v1.2.2</link>
-						
-			</link-group>
+			<link type="language" href="contrib/fr.xml" lang="en">French</link>
+			<link type="language" href="contrib/fr.xml" lang="fr">Français</link>
+			<link type="language" href="contrib/fr.xml" lang="de">Franzözisch</link>
+			<link type="language" href="contrib/de.xml" lang="en">German</link>
+			<link type="language" href="contrib/de.xml" lang="fr">Allemand</link>
+			<link type="language" href="contrib/de.xml" lang="de">Deutsch</link>
+			<link type="contrib" href="contrib/install_1122_to_122.xml" lang="en">Update from v1.1.2.2 to v1.2.2</link>
+			<link type="contrib" href="contrib/install_1122_to_122.xml" lang="fr">Mise à jour de v1.1.2.2 à v1.2.2</link>
+			<link type="contrib" href="contrib/install_1122_to_122.xml" lang="de">Aktualisierung von v1.1.2.2 bis v1.2.2</link>
+			<link type="contrib" href="contrib/install_12_to_122.xml" lang="en">Update from v1.2 to v1.2.2</link>
+			<link type="contrib" href="contrib/install_12_to_122.xml" lang="fr">Mise à jour de v1.2 à v1.2.2</link>
+			<link type="contrib" href="contrib/install_12_to_122.xml" lang="de">Aktualisierung von v1.2 bis v1.2.2</link>
+			<link type="contrib" href="contrib/install_121_to_122.xml" lang="en">Update from v1.2.1 to v1.2.2</link>
+			<link type="contrib" href="contrib/install_121_to_122.xml" lang="fr">Mise à jour de v1.2.1 à v1.2.2</link>
+			<link type="contrib" href="contrib/install_121_to_122.xml" lang="de">Aktualisierung von v1.2.1 bis v1.2.2</link>
+		</link-group>
 	</header>
 	<action-group>
 		<copy>
@@ -211,7 +202,7 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 			<file from="root/adm/style/dkp/*.*" to="adm/style/dkp/*.*"/>
 			<file from="root/images/*.*" to="images/*.*"/>
 			<file from="root/includes/acp/*.*" to="includes/acp/*.*"/>
-			<file from="root/includes/ucp/*.*" to="includes/ucp/*.*"/>			
+			<file from="root/includes/ucp/*.*" to="includes/ucp/*.*"/>
 			<file from="root/includes/acp/info/*.*" to="includes/acp/info/*.*"/>
 			<file from="root/includes/bbdkp/*.*" to="includes/bbdkp/*.*"/>
 			<file from="root/includes/bbdkp/portal/*.*" to="includes/bbdkp/portal/*.*"/>
@@ -224,7 +215,6 @@ Bitte lesen sie docs\INSTALL.html bevor. ]]>
 			<file from="root/styles/prosilver/theme/images/dkp/*.*" to="styles/prosilver/theme/images/dkp/*.*"/>
 			<file from="root/umil/*.*" to="umil/*.*"/>
 		</copy>
-
 		<open src=".htaccess">
 			<edit>
 				<comment lang="en"><![CDATA[adding htaccess rule to redirect to portal]]></comment>
@@ -237,7 +227,6 @@ Deny from All
 				<action type="after-add"><![CDATA[DirectoryIndex portal.php index.php index.html index.htm]]></action>
 			</edit>
 		</open>
-		
 		<open src="common.php">
 			<edit>
 				<comment lang="en"><![CDATA[adding required classfiles for bbdkp in common.php.]]></comment>
@@ -257,39 +246,37 @@ if(@defined("EMED_BBDKP"))
 }]]></action>
 			</edit>
 		</open>
-		<open src="/styles/prosilver/template/overall_footer.html">
-			<edit>
-				<comment lang="en"><![CDATA[Adding bbdkp credits link in overall_footer ]]></comment>
-				<comment lang="fr"><![CDATA[Ajout lien les crédits dans overall_footer ]]></comment>
-				<comment lang="de"><![CDATA[Zufügung Credits link in overall_footer ]]></comment>			
-				<find><![CDATA[2000, 2002, 2005, 2007 phpBB Group]]></find>
-				<action type="after-add"><![CDATA[<br />
-<script type="text/javascript">
-function pop_search()
-{
-    search = window.open('aboutbbdkp.php','search','resizable=no,toolbar=no,status=no,height=400,width=680,screenX=50,screenY=25,left=100,top=70')
-    search.focus();
-}
-</script>
-<a class="bbdkpcredits" onclick="javascript:pop_search();" style="cursor:pointer;" onmouseover="style.textDecoration='underline';" onmouseout="style.textDecoration='none';">BBdkp Credits</a>
-<br />]]></action>
-			</edit>
-		</open>
+
 		<open src="/styles/prosilver/theme/stylesheet.css">
 			<edit>
 				<comment lang="en"><![CDATA[bbdkp css]]></comment>
 				<comment lang="fr"><![CDATA[bbdkp css]]></comment>
-				<comment lang="de"><![CDATA[bbdkp css]]></comment>								
+				<comment lang="de"><![CDATA[bbdkp css]]></comment>
 				<find><![CDATA[@import url("colours.css");]]></find>
 				<action type="after-add"><![CDATA[@import url("bbdkp.css");
 ]]></action>
+			</edit>
+		</open>
+		<open src="adm/style/overall_header.html">
+			<edit>
+				<comment lang="en"><![CDATA[adding jquery scripts to admin header]]></comment>
+				<comment lang="fr"><![CDATA[ajout de scripts jquery au header admin ]]></comment>
+				<comment lang="de"><![CDATA[Zufügung jquery header scripts im admin]]></comment>
+				<find><![CDATA[</head>]]></find>
+				<action type="before-add"><![CDATA[<!-- begin bbdkp -->
+	<script type="text/javascript" src="style/dkp/jquery.js"></script>
+	<script type="text/javascript" src="style/dkp/farbtastic.js"></script>
+	<link rel="stylesheet" href="style/dkp/farbtastic.css" type="text/css" />
+	<link rel="stylesheet" href="style/dkp/bbdkp.css" type="text/css" />
+<!-- end bbdkp -->
+		                ]]></action>
 			</edit>
 		</open>
 		<open src="includes/functions.php">
 			<edit>
 				<comment lang="en"><![CDATA[ preloading dkp language files in functions.php]]></comment>
 				<comment lang="fr"><![CDATA[ ajouter le fichier de langue dans fonctions.php ]]></comment>
-				<comment lang="de"><![CDATA[ zufügen dkp Sprachdatei in functions.php]]></comment>								
+				<comment lang="de"><![CDATA[ zufügen dkp Sprachdatei in functions.php]]></comment>
 				<find><![CDATA[if (defined('HEADER_INC'))]]></find>
 				<action type="before-add"><![CDATA[	$user->add_lang(array('mods/dkp_common'));
 ]]></action>
@@ -324,24 +311,6 @@ function pop_search()
 ]]></action>
 			</edit>
 		</open>
-		
-		<open src="adm/style/overall_header.html">
-		        <edit>
-		                <comment lang="en"><![CDATA[adding jquery scripts to admin header]]></comment>
-		                <comment lang="fr"><![CDATA[ajout de scripts jquery au header admin ]]></comment>
-		                <comment lang="de"><![CDATA[Zufügung jquery header scripts im admin]]></comment>
-		                <find><![CDATA[</head>]]></find>
-		                <action type="before-add"><![CDATA[
-<!-- begin bbdkp -->
-	<script type="text/javascript" src="style/dkp/jquery.js"></script>
-	<script type="text/javascript" src="style/dkp/farbtastic.js"></script>
-	<link rel="stylesheet" href="style/dkp/farbtastic.css" type="text/css" />
-	<link rel="stylesheet" href="style/dkp/bbdkp.css" type="text/css" />
-<!-- end bbdkp -->
-		                ]]></action>
-		        </edit>
-		</open>
-		
 		<open src="styles/prosilver/template/overall_header.html">
 			<edit>
 				<comment lang="en"><![CDATA[install bbDKP header - All in one file]]></comment>
@@ -353,7 +322,7 @@ function pop_search()
 			<edit>
 				<comment lang="en"><![CDATA[insert links in template]]></comment>
 				<comment lang="fr"><![CDATA[inserer liens dans template]]></comment>
-				<comment lang="de"><![CDATA[inseriere Links im Template]]></comment>								
+				<comment lang="de"><![CDATA[inseriere Links im Template]]></comment>
 				<find><![CDATA[<li class="icon-home"><a href="{U_INDEX}" accesskey="h">{L_INDEX}</a>]]></find>
 				<action type="before-add"><![CDATA[<li class="icon-home"><a href="{U_PORTAL}">{L_PORTAL}</a></li>
 				<li class="icon-faq"><a href="{U_DKP}">{L_DKPPAGE}</a><!-- BEGIN dkpnavlinks --> <strong>&#8249;</strong> <a href="{dkpnavlinks.U_DKPPAGE}">{dkpnavlinks.DKPPAGE}</a><!-- END dkpnavlinks --></li>
@@ -372,7 +341,7 @@ Post-install instructions :
 Note : Should you need to deactivate bbDKP you can open configdkp.php change  @define('EMED_BBDKP', true);  to  //@define('EMED_BBDKP', true);  
 
 Enjoy ;)]]></diy-instructions>
-<diy-instructions lang="fr"><![CDATA[le guide d’installation et mise à jour : /docs/install.html
+		<diy-instructions lang="fr"><![CDATA[le guide d’installation et mise à jour : /docs/install.html
 Liste des changements : /docs/changelog.html
 
 Résumé des étapes de post-installation
@@ -382,8 +351,8 @@ Résumé des étapes de post-installation
 
 Note : Il est possible de désactiver le MOD en ouvrant configdkp.php et en changeant  @define('EMED_BBDKP', true);  à  //@define('EMED_BBDKP', true);  
 
-Success ;)	]]></diy-instructions>		
-<diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
+Success ;)]]></diy-instructions>
+		<diy-instructions lang="de"><![CDATA[Installations und Upgradeanweisungen : /docs/install.html
 Liste der änderungen : /docs/changelog.html
 
 1) 1.2.2 Datenbank Installation order aktualisierung : install/index.php 
@@ -391,6 +360,6 @@ Liste der änderungen : /docs/changelog.html
 
 Notiz : Sie können bbDKP deaktivieren indem sie configdkp.php öffnen und @define('EMED_BBDKP', true); ändern nach  //@define('EMED_BBDKP', true);  
 
-Viel Spaß ;)	]]></diy-instructions>		
+Viel Spaß ;)]]></diy-instructions>
 	</action-group>
 </mod>
