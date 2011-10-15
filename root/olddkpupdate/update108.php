@@ -786,7 +786,6 @@ function bbdkp_restore108($bbdkpold)
 	   $db->sql_freeresult($result);
 	   unset ($sql_ary);
 	   
-	   
 	   // old ranks from 1.0.8 are *not* retained so we assign every member the rank "0"
 	   // important !!!! user must run the armory updater tool to fetch correct ranks, gender and achievement points 
 	   // from Blizz/Aion or use custom ranks. 

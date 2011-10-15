@@ -1552,6 +1552,7 @@ function gameupdate($action, $version)
 					break;
 									
 				case '1.2.2':
+					resync();
 					break;
 				
 			}
@@ -1566,6 +1567,20 @@ function gameupdate($action, $version)
 	}
 		
 	 
+}
+/**
+ * 
+ */
+function resync()
+{
+	global $user, $table_prefix, $config, $db;
+	// populate the event_id, we have to match raid_name to event_name oO !
+	$sql = "UPDATE " . $table_prefix ."bbdkp_raids r 
+			INNER JOIN temp_raids t ON t.raid_id = r.raid_id 
+			INNER JOIN " . $table_prefix ."bbdkp_events e ON t.raid_name = e.event_name
+			SET r.event_id = e.event_id" ;
+	$db->sql_query($sql);
+	
 }
 
 /******************************
@@ -2003,8 +2018,8 @@ function tableupdates_12($action, $version)
 			
 			// populate the event_id, we have to match raid_name to event_name oO !
 			$sql = "UPDATE " . $table_prefix ."bbdkp_raids r 
-					INNER JOIN temp_raids t ON r.raid_id = t.raid_id 
-					INNER JOIN " . $table_prefix ."bbdkp_events e ON t.raid_name =  e.event_name
+					INNER JOIN temp_raids t ON t.raid_id = r.raid_id 
+					INNER JOIN " . $table_prefix ."bbdkp_events e ON t.raid_name = e.event_name
 					SET r.event_id = e.event_id" ;
 			$db->sql_query($sql);
 			
